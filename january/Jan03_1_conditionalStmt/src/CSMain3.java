@@ -31,7 +31,7 @@ public class CSMain3 {
 
 	}
 
-	public static String getjudge(double bmi) {
+	public static String getJudge(double bmi) {
 		if (bmi > 30) {
 			return "고도 비만";
 		} else if (bmi >= 25) {
@@ -58,7 +58,7 @@ public class CSMain3 {
 		double weight = getWeight();
 		System.out.println("-----");
 		double bmi = getBMI(height, weight);
-		String result = getjudge(bmi);
+		String result = getJudge(bmi);
 		printResult(bmi, name, result);
 		
 

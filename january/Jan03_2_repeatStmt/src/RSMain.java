@@ -41,12 +41,15 @@ public class RSMain {
 //		}
 //		System.out.println("-----");
 ////		 1 짝 3 짝 5 짝 7 짝 9 짝
-		for (byte i = 1; i > 0; i++) {
-			if (i % 2 == 0) {
-				System.out.println("짝");
-			} else {
-				System.out.println(i);
-			}
+		for (byte i = 1; i < 11 ; i++) {
+
+	System.out.println((i % 2 == 0 ? "짝" : i));
+			
+//			if (i % 2 == 0) {
+//				System.out.println("짝");
+//			} else {
+//				System.out.println(i);
+//			}
 		}
 
 	}
