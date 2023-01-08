@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class RSMain2 {
 	public static void main(String[] args) {
 //		for (int dan = 2; dan < 10; dan++) {
@@ -62,7 +60,7 @@ public class RSMain2 {
 //			}
 //			System.out.println();
 //		}
-		
+
 		// 11 22 33 44 55
 //		for (int i = 1; i < 6; i++) {
 //			for (int j = 1; j < i; j++) { 
@@ -70,7 +68,7 @@ public class RSMain2 {
 //			}
 //			System.out.println("*");
 //		}
-		
+
 		// 짝수자리만 ㅎ 나머진ㅋ
 //		for (int i = 0; i < 5; i++) {
 //			for (int j = 0; j <= i; j++) {
@@ -79,12 +77,12 @@ public class RSMain2 {
 //			System.out.println();
 //		}
 		// 1 3 5 7 9, 3 5번째는 ㅎ
-		
+
 		String s;
 		for (int i = 0; i < 5; i++) {
 			s = i % 2 == 0 ? "ㅋ" : "ㅎ"; // 검사, 최적화, 검사횟수 줄어듬
 			for (int j = 0; j <= (i * 2); j++) {
-				System.out.println(s);	// 출력
+				System.out.println(s); // 출력
 //				System.out.print(i % 2 == 0 ? "ㅋ" : "ㅎ"); <- 최적화 전 단계
 			}
 			System.out.println();

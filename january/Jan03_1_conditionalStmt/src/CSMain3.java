@@ -60,7 +60,6 @@ public class CSMain3 {
 		double bmi = getBMI(height, weight);
 		String result = getJudge(bmi);
 		printResult(bmi, name, result);
-		
 
 		// bmi = weight/height*height
 		// bmi<18.5 저체중 18.5<=bmi<=23정상 23<bmi<25 과체중 25<=bmi<=30비만 30<bmi 고도비만

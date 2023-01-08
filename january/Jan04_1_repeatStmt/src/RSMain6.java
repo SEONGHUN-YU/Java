@@ -14,9 +14,9 @@ import java.util.Scanner;
 public class RSMain6 {
 
 	public static void printScore(int turn) {
-				System.out.printf("%d번만에 정답입니다!", turn);		
+		System.out.printf("%d번만에 정답입니다!", turn);
 	}
-	
+
 	public static int answer() {
 		// 1~ 10000까지 랜덤한 값을 가지는 함수
 		System.out.println("뭐 : ");
@@ -50,11 +50,10 @@ public class RSMain6 {
 				break;
 			}
 
-			
 // 게임 계속해야 되면? = false 내맘임 바꿔도 됨
 // 게임 그만해야 되면? = true
 
-			//		boolean cold = true;
+			// boolean cold = true;
 //		if (cold){
 //			System.out.println("히터 틀어");
 //		}else if (!cold) {
@@ -62,7 +61,7 @@ public class RSMain6 {
 //		}
 //		// == true : 생략하는 게 default, 일반적으로 생략함, 쓰면 초보 티남
 //		// == false : !를 활용
-			
+
 //			Random r = new Random();
 //			Scanner k = new Scanner(System.in);
 //			int gameAnswer = r.nextInt(10000) + 1;

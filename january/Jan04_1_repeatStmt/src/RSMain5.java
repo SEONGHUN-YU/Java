@@ -20,7 +20,7 @@ public class RSMain5 {
 	public static void main(String[] args) {
 		Random r = new Random();
 		Scanner k = new Scanner(System.in);
-		int a = r.nextInt(10000)+1;
+		int a = r.nextInt(10000) + 1;
 		int b;
 		int c = 0;
 		System.out.println();
@@ -28,14 +28,14 @@ public class RSMain5 {
 			c++;
 			System.out.println("뭐 : ");
 			b = k.nextInt();
-			if (a>b) {
+			if (a > b) {
 				System.out.print("Over\n");
-			}else if (a<b) {
+			} else if (a < b) {
 				System.out.print("Under\n");
-			}else {
+			} else {
 				break;
 			}
 		}
-		System.out.printf("%d번만에 정답입니다!",c);
+		System.out.printf("%d번만에 정답입니다!", c);
 	}
 }

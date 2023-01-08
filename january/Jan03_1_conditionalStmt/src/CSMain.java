@@ -38,10 +38,7 @@ public class CSMain {
 		// else if를 쓸 수 있는 상황이면 써라!
 		// 그러나 else if를 맹신하면 오류 나기 쉽다, 동시에 검사가 필요할 때는 if를 여러번 쓰는 게 낫다
 		// 검사횟수가 줄어든다
-		
-		
-		
-		
+
 		if (avgScore >= 90) {
 			System.out.println("수");
 		} else if (avgScore >= 80) {
@@ -60,7 +57,6 @@ public class CSMain {
 //		if (avgScore >= 80 && avgScore < 90) {
 //			System.out.println("우");
 //		} ... 이 방식이 틀렸는가? -> X, 그러나 소스도 길고 실행횟수도 많아지고 용량도 커지기 때문에 효율적이지 못하다
-		
 
 //		if (avgScore >= 80) {
 //			System.out.println("잘했다");
@@ -85,12 +81,6 @@ public class CSMain {
 //				}
 //			}
 //		}
-		
-		
-		
-		
-		
-		
-		
+
 	} // 메인함수꺼
 } // 클래스꺼

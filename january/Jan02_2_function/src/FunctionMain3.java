@@ -23,7 +23,6 @@ import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardDownRightHandler;
 //정답은 없다, 다만 더 괜찮은 답은 있다
 //조건문, 반복문, 배열, 그 언어만의 특징을 자유자재로 써낼 수 있으면 => 끝
 
-
 public class FunctionMain3 {
 
 	public static double getBasicWeight(double h) {

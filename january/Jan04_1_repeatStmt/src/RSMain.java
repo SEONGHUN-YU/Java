@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 // 반복횟수가 명확 -> for
 // 반복조건이 명확
 // 10:34
@@ -41,7 +39,7 @@ public class RSMain {
 		int ii = -1; // RAM 사용량이 더 늘어남
 		for (int i = 1; i < 10; i++) {
 			ii *= -1;
-			d += (i*ii);
+			d += (i * ii);
 //			d += (i % 2 == 1) ? i : -i; // <- (괜찮은 풀이), 조건을 따진다 => CPU 사용량이 늘어남
 //			if (i % 2 == 0) { // <- (기본 풀이)
 //				d -= i;

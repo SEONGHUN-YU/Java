@@ -8,7 +8,7 @@
 public class ArrayMain3 {
 	public static void main(String[] args) { // 학생 3명이 시험을 3번 본 거라고 치자
 		int[][] score = { { 90, 50, 80 }, { 10, 20, 30 }, { 10, 30, 50 } }; // 2차원 배열
-		
+
 		System.out.println(score); // 의미상으로는 전체점수
 		System.out.println(score[0]); // 첫번째 학생의 점수
 		System.out.println(score[1][2]); // 두번째 학생의 3번째 시험점수

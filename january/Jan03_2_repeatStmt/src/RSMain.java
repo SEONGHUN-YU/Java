@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 // 조건문
 // 반복문 <- 가장 수학스럽다
 // 배열
@@ -41,10 +39,10 @@ public class RSMain {
 //		}
 //		System.out.println("-----");
 ////		 1 짝 3 짝 5 짝 7 짝 9 짝
-		for (byte i = 1; i < 11 ; i++) {
+		for (byte i = 1; i < 11; i++) {
 
-	System.out.println((i % 2 == 0 ? "짝" : i));
-			
+			System.out.println((i % 2 == 0 ? "짝" : i));
+
 //			if (i % 2 == 0) {
 //				System.out.println("짝");
 //			} else {

@@ -19,7 +19,7 @@ public class OOPMain {
 	public static void main(String[] args) {
 		String name = "후추";
 		System.out.println(name);
-		
+
 		int age = 3;
 		System.out.println(age);
 

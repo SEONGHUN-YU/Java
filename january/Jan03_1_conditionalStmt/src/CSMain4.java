@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 // 조건문 2개
 // if - else if - ... - else
 // switch - case <- Python에 없는 조건문!, 근데 if보다 기능이 딸림, 가독성은 좋나??;;-> ㄴㄴ;;;

@@ -132,8 +132,7 @@ public class FunctionMain {
 // 회사 : 내 실력을 드러내려고 복잡한 알고리즘을 쓰는 곳이 아니다
 // 가장 간결하게 해치우는 게 최고다
 // 반복문을 쓰는 게 현실적이다
-		
-		
+
 		// 옛날 자바에는 println(String s)만 있었다
 		// String s = a+""; 같은 방식으로 썼었다
 		int a = 10;

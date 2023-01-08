@@ -1,3 +1,4 @@
+
 // 백준, 프로그래머스 < , hackerrank, leetcode, codeup
 import java.util.Random;
 import java.util.Scanner;
@@ -53,8 +54,7 @@ public class RSMain3 {
 		// 1 ~ 100 사이의 랜덤한 정수 계속 출력되게, 단 짝수 나올 시 종료
 		int c = r.nextInt(100) + 1; // 그냥 (101)은 0 ~ 100으로 나온다
 		System.out.println(c);
-		
-		
+
 		do { // <- while 과는 먼저 실행하고나서 검사를 하느냐, 검사를 먼저하고 실행하느냐 차이
 			c = r.nextInt(100) + 1;
 			System.out.println(c);

@@ -53,7 +53,7 @@ public class RSMain4 {
 			b: switch (word) {
 			case "ㅃㅇ":
 				break a; // <- 이 break는 switch꺼다 (따라서 while의 루프가 종료되질 않음)
-                 // ↑ 함수명에(조건문 반복문에) 이름 붙여주고 break 뒤에 붙여주면 순서를 무시하고 깨준다 (Java만의 해결법)
+			// ↑ 함수명에(조건문 반복문에) 이름 붙여주고 break 뒤에 붙여주면 순서를 무시하고 깨준다 (Java만의 해결법)
 			default:
 				System.out.println("뭐 : ");
 				word = k.next();

@@ -32,12 +32,12 @@ public class ArrayMain {
 
 		// 횟수가 명확 : for
 		// 조건이 명확 : while, do-while
-		
+
 		// 배열을 차례대로 돌면서 탐색 : for-each => 순서조절불가, i값이 없음 => 따라서 활용도는 별로, 그래도 알아는 두자
-		//		for (자료형 변수명 : 배열명) {
-		//		
-		//		}
-		
+		// for (자료형 변수명 : 배열명) {
+		//
+		// }
+
 		// 배열과 for문은 짝꿍이다
 		for (int i = 0; i < kor.length; i++) { // for문을 자동완성 시키면 가장 가까이 있는 배열을 넣어준다
 			int t = kor[i];
@@ -48,8 +48,6 @@ public class ArrayMain {
 		for (int t : kor) {
 			System.out.println(t);
 		}
-		
-		
-		
+
 	}
 }
