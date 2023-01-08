@@ -23,13 +23,12 @@ public class OperatorMain3 {
 
 		System.out.print("페달 돌린 횟수 : ");
 		int spin = keyboard.nextInt();
-		
+
 		System.out.println("-----");
 
 //		double moving = (double) front / back;
 		double move = bike * spin * front / back;
 		System.out.printf("이동거리 : %.2f", move);
-		
-		
+
 	}
 }

@@ -7,6 +7,6 @@ public class PrintMain3 {
 		System.out.println("* 사는곳 : 서초          *");
 		System.out.println("**************************");
 		Thread.sleep(5000);
-		
+
 	}
 }
