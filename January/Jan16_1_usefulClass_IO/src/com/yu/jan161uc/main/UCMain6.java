@@ -25,24 +25,35 @@ import java.util.Scanner;
 // .csv <- 데이터 업계에서 많이 쓰임, 그럴만 하네
 //		Comma Separated Value
 //		각각의 값들이 ,로 구분된 파일이라는 뜻
+
+// 빅데이터 분석 :
+// 쉽다는 이유로 Python 시키는데
+// 소규모 분석을 해서 구실만 갖추고 의미 없는데
+
+// 아직 대한민국에는 빅데이터가 없다
+
 public class UCMain6 {
 	public static void main(String[] args) {
-		// 이름 :
-		// 유통기한(YYYYMMDD) :
-		// 가격 :
-		// 중량 :
-
 		Scanner k = new Scanner(System.in);
-		System.out.println("쓰세요 : ");
-		String s = k.next();
-
 		BufferedWriter bw = null;
 		try {
-			FileOutputStream fos = new FileOutputStream("D:\\yu\\음식.csv", true);
-			OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8");
+			System.out.println("품명 : ");
+			String n = k.next();
+			System.out.println("유통기한 : ");
+			String e = k.next();
+			System.out.println("가격 : ");
+			String p = k.next();
+			System.out.println("중량 : ");
+			String w = k.next();
+
+			FileOutputStream fos = new FileOutputStream("D:\\yu\\food.csv", true);
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "utf-8"); // euc-kr <- 엑셀에서 안 깨지려면 이거
 			bw = new BufferedWriter(osw);
-			bw.write(s + ",");
+
+			String data = String.format("%s,%s,%s,%s\r\n", n, e, p, w); // 꿀팁
+			bw.write(data);
 			bw.flush();
+			System.out.println("끝");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
