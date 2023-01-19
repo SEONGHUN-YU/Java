@@ -30,7 +30,7 @@ import seonghun.yu.string.cleaner.StringCleaner;
 
 // 내부적으로 전달할 때는 : request header (요청 헤더) (보안상 꽤 중요한 값 전달할 때 쓰는 거)
 
-// 인터넷 주소에는 한글 못 넣는다! <- 중요
+// 인터넷 주소에는 한글 못 넣는다! <- 완전 중요!(그래서 URLEncoder 써야함)
 //**1 명절선물 -> %2A어쩌구 주소(URL인코딩)
 
 // 네이버에서 뉴스검색한 데이터를 파일에 저장
@@ -42,9 +42,6 @@ import seonghun.yu.string.cleaner.StringCleaner;
 public class UCMain3 {
 	public static void main(String[] args) {
 
-//		VITQwGJ87taKzIBU1ALt
-//		dCQNImVfMu
-
 		HttpsURLConnection huc = null;
 		BufferedWriter bw = null;
 		try {
@@ -54,8 +51,8 @@ public class UCMain3 {
 			URL u = new URL("https://openapi.naver.com/v1/search/news.xml?query=" + what);
 			huc = (HttpsURLConnection) u.openConnection();
 			// request header : huc.addRequestProperty(제목, 값);
-			huc.addRequestProperty("X-Naver-Client-Id", StudyKey2.NAVER_SECURITY_ID);
-			huc.addRequestProperty("X-Naver-Client-Secret", StudyKey3.NAVER_SECURITY_SECRET);
+			huc.addRequestProperty("X-Naver-Client-Id", StudyKey.NAVER_SECURITY_ID);
+			huc.addRequestProperty("X-Naver-Client-Secret", StudyKey.NAVER_SECURITY_SECRET);
 			InputStream is = huc.getInputStream();
 
 //			InputStreamReader isr = new InputStreamReader(is, "utf-8"); <- 확인할 때만 필요한 애들

@@ -33,7 +33,7 @@ public class UCMain2 {
 						String when = String.format("%d%02d%02d", y, m, i); // %d를 범위에 따라 적절히 사용해야 한다
 
 						URL u = new URL(
-								"http://openapi.seoul.go.kr:8088/575a4655496b636839386f58586542/xml/CardSubwayStatsNew/1/650/"
+								"http://openapi.seoul.go.kr:8088/"+StudyKey.SEOUL_API+"/xml/CardSubwayStatsNew/1/650/"
 										+ when);
 						huc = (HttpURLConnection) u.openConnection();
 						InputStream is = huc.getInputStream();

@@ -35,7 +35,7 @@ public class UCMain3 {
 	public static void main(String[] args) {
 		HttpURLConnection huc = null;
 		try {
-			URL u = new URL("http://openapi.seoul.go.kr:8088/575a4655496b636839386f58586542/xml/RealtimeCityAir/1/25/");
+			URL u = new URL("http://openapi.seoul.go.kr:8088/"+StudyKey.SEOUL_API+"/xml/RealtimeCityAir/1/25/");
 			huc = (HttpURLConnection) u.openConnection();
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
