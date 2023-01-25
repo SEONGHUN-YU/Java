@@ -1,5 +1,7 @@
 package com.yu.jan203uc.subway;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SubwayStationInfo {
@@ -9,13 +11,23 @@ public class SubwayStationInfo {
 	private int get_on;
 	private int get_off;
 
+//	생성자, 오버로딩생성자, 게터세터, info
+
 	public SubwayStationInfo() {
 	}
 
-	public SubwayStationInfo(String subwayline) {
+	public SubwayStationInfo(String subwayline) throws ParseException {
 		String[] line2 = subwayline.split(",");
-		subwayline = line2[3];
+//		line2[0] = "2010";
+//		line2[1] = "01";
+//		line2[2] = "01";
+		String date2 = line2[0] + line2[1] + line2[2]; // 20100101"
+		date = new SimpleDateFormat("yyyyMMdd").parse(date2);
+		this.subwayline = line2[3];
 		stationName = line2[4];
+		// ↓ "20101" -> int로
+		get_on = Integer.parseInt(line2[5]); // String -> Interger -> int
+		get_off = Integer.parseInt(line2[6]);
 	}
 
 	public Date getDate() {
@@ -59,10 +71,10 @@ public class SubwayStationInfo {
 	}
 
 	public void printInfo() {
-		System.out.println(date);
-		System.out.println(subwayline);
-		System.out.println(stationName);
-		System.out.println(get_on);
-		System.out.println(get_off);
+		System.out.println(new SimpleDateFormat("yyyy/MM/dd(E)").format(date));
+		System.out.println(subwayline + " - " + stationName);
+		System.out.println("탄 사람 : " + get_on);
+		System.out.println("내린 사람 : " + get_off);
+		System.out.println("-----");
 	}
 }
