@@ -17,7 +17,7 @@ public class InsertMain {
 			con = DriverManager.getConnection(StudyKey.DBSERVER_ADDRESS, StudyKey.SERVER_ID, StudyKey.SERVER_PASSWORD);
 
 			// 데이터 확보 ---------- (SQL DB에서 양식 가져와)
-			System.out.print("휴게소이름 : \n");
+			System.out.print("휴게소이름 : ");
 			String n = k.next();
 			System.out.print("방향 : ");
 			String s = k.next();

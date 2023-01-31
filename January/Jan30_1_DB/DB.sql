@@ -5,7 +5,7 @@
 -- 안동휴게소, 하행, 중앙고속도로에 있는, 주차 100대 가능
 -- 와이퍼, 차량용품, 2000원
 
-select * from jan30_restarea;
+select * from jan30_shop;
 
 create table jan30_restarea(
 	r_no number(3) primary key,
@@ -156,8 +156,6 @@ where s_r_no = (
 	where r_name = '안동휴게소' and r_toward = '하행'
 	) and s_kind = '간식';
 	
-select * from JAN30_RESTAREA;
-
 update jan30_restarea set r_park = ? where r_name = ?
 
 -- 간식류 10% 인상

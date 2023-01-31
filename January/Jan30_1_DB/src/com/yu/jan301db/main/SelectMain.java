@@ -18,7 +18,6 @@ public class SelectMain {
 		ResultSet rs = null; // select 결과 [List에 가까움]
 		try {
 
-			String addr = StudyKey.DBSERVER_ADDRESS;
 			con = DriverManager.getConnection(StudyKey.DBSERVER_ADDRESS, StudyKey.SERVER_ID, StudyKey.SERVER_PASSWORD);
 
 			// 데이터 확보 <- 이번엔 필요 없네?
@@ -41,7 +40,7 @@ public class SelectMain {
 			while (rs.next()) {
 				// rs.getXXX("필드명") : 현재위치의 그거
 				System.out.println(rs.getString("s_name")); // record 번호 써도 되긴 하는데 객체지향 시대에 굳이 그러진 말자...
-				System.out.println(rs.getString("s_price"));
+				System.out.println(rs.getDouble("s_price"));
 				System.out.println("-----");
 			}
 
