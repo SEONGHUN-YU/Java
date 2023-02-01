@@ -23,12 +23,14 @@ public class ShopDAO {
 			ArrayList<CategoryCount> alc = new ArrayList<>();
 			CategoryCount cc = null;
 			while (rs.next()) {
+//				alc.add(new CategoryCount(rs.getString("s_kind"), rs.getInt("count(*)"))); // 줄이면 이렇게
 				cc = new CategoryCount();
 				cc.setCategory(rs.getString("s_kind"));
 				cc.setCount(rs.getInt("count(*)"));
 				alc.add(cc);
 			}
 			return alc;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -38,7 +40,6 @@ public class ShopDAO {
 	}
 }
 
-// 공부한 흔적
 //public static ArrayList<Shop> getShop() {
 //	Connection con = null;
 //	PreparedStatement pstmt = null;
