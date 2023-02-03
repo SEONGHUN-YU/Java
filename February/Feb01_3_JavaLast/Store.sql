@@ -56,3 +56,15 @@ from(
 		order by s_name, s_price
 		)
 	) where rn >= 1 and rn <= 3;
+
+	
+
+select count(*) from snack where s_exp >= sysdate and s_name like '%뿌셔%';
+	
+select * from(select rownum as rn, c_name, c_location, s_name, s_price from(c_name, c_location, s_name, s_price from cvs, snack where c_no = s_c_no and s_exp >= sysdate and s_name like '%'||?||'%' order by c_name, c_location, s_name, s_price)) where rn >=3 and rn <= 5;
+
+select * from(select rownum as rn, c_name, c_location, s_name, s_price from(select c_name, c_location, s_name, s_price from cvs, snack where c_no = s_c_no and s_exp >= sysdate and s_name like '%'||?||'%' order by c_name, s_name)) where rn >= ? and rn <= ?
+	
+	
+	
+	

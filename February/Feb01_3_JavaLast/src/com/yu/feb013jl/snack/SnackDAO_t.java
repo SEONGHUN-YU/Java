@@ -1,6 +1,7 @@
 package com.yu.feb013jl.snack;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,6 +32,30 @@ public class SnackDAO_t {
 		return SDAO;
 	}
 
+	public int getSearchCount(String searchTxt) {
+		Connection con = null; // 연결
+		PreparedStatement pstmt = null; // DB작업 다 해주는 애
+		ResultSet rs = null; // select문 결과
+		try {
+			con = YUDBManager.hello(StudyKey.DBSERVER_ADDRESS, StudyKey.SERVER_ID, StudyKey.SERVER_PASSWORD);
+			String sql = "select count(*) from snack where s_exp >= sysdate and s_name like '%'||?||'%'";
+			pstmt = con.prepareStatement(sql); // DB작업해주는 애를 sql과 연결한다
+			pstmt.setString(1, searchTxt);
+			rs = pstmt.executeQuery();
+			rs.next();
+			return rs.getInt("count(*)");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	public int getSearchPageCount(String searchTxt) {
+		return (int) Math.ceil(getSearchCount(searchTxt) / (double) snackPerPage);
+//		select c_name, c_location, s_name, s_price from cvs, snack where c_no = s_c_no and s_exp >= sysdate order by c_name, s_name
+	}
+
 	public int getAllPageCount() {
 		// allSnackCount / snackPerPage = 14 / 3 = 4
 		// allSnackCount / (double) snackPerPage = 14 / 3.0 = 4.666
@@ -59,6 +84,44 @@ public class SnackDAO_t {
 	}
 
 	// 실전에서 전체 조회라는 건 없음
+
+	public ArrayList<CVS_Snack> getSearchSnack(int page, String searchTxt) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DriverManager.getConnection(StudyKey.DBSERVER_ADDRESS, StudyKey.SERVER_ID, StudyKey.SERVER_PASSWORD);
+
+			int start = (page - 1) * snackPerPage + 1;
+			int end = page * snackPerPage;
+
+			String sql = "select * from(select rownum as rn, c_name, c_location, s_name, s_price from(select c_name, c_location, s_name, s_price from cvs, snack where c_no = s_c_no and s_exp >= sysdate and s_name like '%'||?||'%' order by c_name, s_name)) where rn >= ? and rn <= ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, searchTxt);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+
+			ArrayList<CVS_Snack> cs_AL = new ArrayList<>();
+			CVS_Snack cs = null;
+			while (rs.next()) {
+				cs = new CVS_Snack();
+				cs.setC_name(rs.getString("c_name"));
+				cs.setC_location(rs.getString("c_location"));
+				cs.setS_name(rs.getString("s_name"));
+				cs.setS_price(rs.getInt("s_price"));
+				cs_AL.add(cs);
+			}
+			return cs_AL;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			YUDBManager.world(con, pstmt, rs);
+		}
+	}
+
 	public ArrayList<Snack> getAllSnack(int page) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -73,7 +136,7 @@ public class SnackDAO_t {
 //			getAllSnackCount(); // 조회할 때마다 세야하나? 아니지...
 //			System.out.println(allSnackCount); // 이런식으로 조회를 하면 될 것을!
 
-			String sql = "select * from(select rownum as rn, s_no, s_name, s_price, s_exp from(select s_no, s_name, s_price, s_exp from snack order by s_name, s_price)) where rn >= ? and rn <= ?";
+			String sql = "select * from(select rownum as rn, s_no, s_name, s_price, s_exp, s_c_no from(select * from snack order by s_name, s_price)) where rn >= ? and rn <= ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);

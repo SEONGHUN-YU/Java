@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import com.yu.feb013jl.cvs.CVS;
+import com.yu.feb013jl.snack.CVS_Snack;
 import com.yu.feb013jl.snack.Snack;
 
 public class Console {
@@ -21,6 +22,7 @@ public class Console {
 		System.out.println("3. 편의점 전체 조회");
 		System.out.println("4. 간식 전체 조회");
 		System.out.println("5. 편의점 찾기");
+		System.out.println("6. 간식 찾기");
 		System.out.println("10. 종료");
 		System.out.println("-----");
 		System.out.print("고르세요 : ");
@@ -65,7 +67,7 @@ public class Console {
 	// 개발자가 SimpleDateFormat 쓸 줄 알텐데, 개발자의 업무는 아니고...
 	// => 디자이너가 날짜 형식 간단하게 처리할 수 있는 기술이 필요하지 않을까?
 	// 나중에 웹 배울 때 할 수 있을 것
-	
+
 	public void showAllSnack(ArrayList<Snack> snacks) {
 		for (Snack s : snacks) {
 			System.out.print(s.getNo() + ") ");
@@ -88,6 +90,15 @@ public class Console {
 	public String showSearchMenu() {
 		System.out.print("검색어 : ");
 		return inputSystem.next();
+	}
+
+	public void showSearchSnack(ArrayList<CVS_Snack> cs_AL) {
+		for (CVS_Snack cv : cs_AL) {
+			System.out.print(cv.getS_name() + " : ");
+			System.out.print(cv.getS_price() + "원 (");
+			System.out.print(cv.getC_name() + " ");
+			System.out.println(cv.getC_location() + ")");
+		}
 	}
 
 	public void destroy() {

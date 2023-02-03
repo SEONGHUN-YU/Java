@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.yu.feb013jl.cvs.CVS;
 import com.yu.feb013jl.cvs.CVSDAO_t;
+import com.yu.feb013jl.snack.CVS_Snack;
 import com.yu.feb013jl.snack.Snack;
 import com.yu.feb013jl.snack.SnackDAO_t;
 
@@ -32,8 +33,8 @@ public class HomeController {
 		String result = null;
 		ArrayList<CVS> cvs_al = null;
 		ArrayList<Snack> snacks = null;
+		ArrayList<CVS_Snack> cv_AL = null;
 		int pageCount = 0;
-		int searchPageCount = 0;
 		int page = 0;
 		int menu = 0;
 		String searchTxt = null;
@@ -52,7 +53,7 @@ public class HomeController {
 			} else if (menu == 3) {
 				pageCount = CVSDAO_t.getCDAO().getAllPageCount();
 				page = view.showSelectPageMenu(pageCount);
-				cvs_al = CVSDAO_t.getCDAO().getAllCVS(page);
+				cvs_al = CVSDAO_t.getCDAO().getAllCVS(page, null);
 				view.showAllCVS(cvs_al);
 			} else if (menu == 4) { // 쌀국수 -> 쌀국수집 쫙(DB안의) -> 그중에 (전체에서) 몇페이지꺼 볼래요? -> 정보출력
 				pageCount = SnackDAO_t.getSDAO().getAllPageCount();
@@ -63,8 +64,14 @@ public class HomeController {
 				searchTxt = view.showSearchMenu();
 				pageCount = CVSDAO_t.getCDAO().getsearchPageCount(searchTxt);
 				page = view.showSelectPageMenu(pageCount);
+				cvs_al = CVSDAO_t.getCDAO().getAllCVS(page, searchTxt);
+				view.showAllCVS(cvs_al);
 			} else if (menu == 6) {
-
+				searchTxt = view.showSearchMenu();
+				pageCount = SnackDAO_t.getSDAO().getSearchPageCount(searchTxt);
+				page = view.showSelectPageMenu(pageCount);
+				cv_AL = SnackDAO_t.getSDAO().getSearchSnack(page, searchTxt);
+				view.showSearchSnack(cv_AL);
 			}
 		}
 		view.destroy();

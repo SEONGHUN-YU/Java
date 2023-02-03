@@ -48,7 +48,7 @@ public class CVSDAO_t {
 		}
 	}
 
-	public ArrayList<CVS> getAllCVS(int page) {
+	public ArrayList<CVS> getAllCVS(int page, String searchTxt) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -57,12 +57,12 @@ public class CVSDAO_t {
 
 			int start = (page * CVSPerPage) - 2;
 			int end = page * CVSPerPage;
-			String count = "slecet count(*) from cvs";
 
-			String sql = "select * from(select rownum as rn, c_no, c_name, c_location, c_addr from(select c_no, c_name, c_location, c_addr from cvs order by c_name, c_location)) where rn >= ? and rn <= ?";
+			String sql = "select * from(select rownum as rn, c_no, c_name, c_location, c_addr from(select c_no, c_name, c_location, c_addr from cvs where C_addr like '%'||?||'%' order by c_name, c_location)) where rn >= ? and rn <= ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setString(1, searchTxt);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			rs = pstmt.executeQuery();
 
 			ArrayList<CVS> cvs_al = new ArrayList<>();
