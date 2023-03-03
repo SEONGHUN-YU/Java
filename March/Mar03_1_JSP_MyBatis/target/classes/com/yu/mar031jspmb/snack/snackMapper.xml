@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="snackMapper">
+	<select id="getAllSnackCount" resultType="java.lang.Integer">
+		select count(*) from mar03_snack
+	</select>
+	<select id="get"
+		parameterType="com.yu.mar031jspmb.snack.SnackSelector"
+		resultType="com.yu.mar031jspmb.snack.Snack">
+		select * from
+		(select rownum as rn, s_no, s_name, s_price, s_exp from
+		(select s_no, s_name, s_price, s_exp from mar03_snack
+		where s_name like '%'||#{search}||'%' order by s_name))
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<insert id="reg" parameterType="com.yu.mar031jspmb.snack.Snack">
+		insert into mar03_snack
+		values(mar03_snack_seq.nextval, #{s_name}, #{s_price}, #{s_exp})
+	</insert>
+</mapper>
