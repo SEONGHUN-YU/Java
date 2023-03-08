@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.loginInput {
+	background-color: transparent;
+	border: white solid 3px;
+	color: white;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+}
+
+.loginInput::placeholder {
+	color: white;
+}
+
+.loginBtn {
+	background-color: transparent;
+	border: none;
+	color: white;
+	font-size: 11pt;
+}
+
+#regTbl {
+	background-color: #263238AA;
+	width: 700px;
+	color: white;
+}
+
+#regTbl th {
+	font-size: 25pt;
+	height: 80px;
+	background-color: #263238;
+}
+
+#regTbl td {
+	padding: 10px;
+}
+
+#regTbl .td1 {
+	width: 70px;
+}
+
+#regTbl input {
+	width: 95%;
+	height: 30px;
+	background-color: transparent;
+	color: white;
+	border: white solid 3px;
+}
+
+#regTbl select {
+	width: 27%;
+	height: 35px;
+	background-color: transparent;
+	color: white;
+	border: white solid 3px;
+}
+
+#regTbl button {
+	background-color: transparent;
+	color: white;
+	font-size: 17pt;
+	border: none;
+	margin: 20px;
+}

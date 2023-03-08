@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* @font-face{
+	font-family: "g";
+	src: url("geumgangsan.ttf");
+} */
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url("../img/back.jpg"); /* 경로기준은 현재 이 css파일 */
+	background-attachment: fixed; /* 배경이 스크롤해도 안 움직이게 */
+	background-repeat: no-repeat; /* 바둑판형태 아니게 */
+	background-position: center;
+	background-size: cover; /* 꽉 차게 */
+}
+
+table {
+	border-spacing: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#siteTitleArea {
+	position: fixed;
+	width: 100%;
+	background-color: #1A237EAA;
+}
+
+#siteMenuArea {
+	width: 1200px;
+	height: 50px;
+}
+
+#siteTitleArea2 {
+	width: 1200px;
+	height: 80px;
+}
+
+#siteTitleArea2 a {
+	font-size: 30pt;
+	color: white;
+}
+
+#siteContentArea {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+	padding-top: 170px;
+}
+
+#homeImg {
+	border-radius: 30px;
+	opacity: 0.7;
+}
+
+#result {
+	position: fixed;
+	top: 520px;
+	right: 40px;
+	z-index: 100;
+	font-size: 20pt;
+	font-weight: 900;
+	color: white;
+}
