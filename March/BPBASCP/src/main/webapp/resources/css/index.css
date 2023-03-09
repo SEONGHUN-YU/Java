@@ -1,7 +1,13 @@
 @charset "UTF-8";
-/* @font-face{
-	font-family: "g";
-	src: url("geumgangsan.ttf");
+
+/* @font-face {
+	font-family: "b";
+	src: url("bread.ttf");
+}
+
+@font-face {
+	font-family: "c";
+	src: url("clock.ttf");
 } */
 body {
 	margin: 0px;
@@ -21,10 +27,22 @@ a {
 	text-decoration: none;
 }
 
+input, button, select, textarea {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+textarea {
+	resize: none;
+}
+
 #siteTitleArea {
 	position: fixed;
 	width: 100%;
-	background-color: #1A237EAA;
+	background-color: #263238AA;
 }
 
 #siteMenuArea {
@@ -38,8 +56,9 @@ a {
 }
 
 #siteTitleArea2 a {
-	font-size: 30pt;
+	font-size: 27pt;
 	color: white;
+	text-shadow: 3px 3px 3px black;
 }
 
 #siteContentArea {
@@ -54,12 +73,20 @@ a {
 	opacity: 0.7;
 }
 
+#fairy {
+	position: fixed;
+	width: 200px;
+	top: 380px;
+	right: 30px;
+	z-index: 99;
+}
+
 #result {
 	position: fixed;
 	top: 520px;
 	right: 40px;
 	z-index: 100;
-	font-size: 20pt;
+	font-size: 17pt;
 	font-weight: 900;
-	color: white;
+	color: white; /* 글자 컬러 */
 }

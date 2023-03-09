@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#snsControlArea {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+}
+
+#snsControlArea2 {
+	width: 400px;
+	background-color: #263238AA;
+}
+
+#snsControlArea2 textarea {
+	width: 310px;
+	height: 150px;
+	background-color: transparent;
+	border: white solid 3px;
+	color: white;
+	padding: 10px;
+}
+
+#snsControlArea2 button {
+	background-color: transparent;
+	font-size: 15pt;
+	color: white;
+	border: none;
+}

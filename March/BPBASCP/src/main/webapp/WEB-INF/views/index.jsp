@@ -7,8 +7,10 @@
 <title>빅데이터 플랫폼 기반 AI 융합 서비스 개발자 양성과정 카페</title>
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/member.css">
+<link rel="stylesheet" href="resources/css/sns.css">
 <script type="text/javascript" src="resources/js/YUValidChecker.js"></script>
 <script type="text/javascript" src="resources/js/bpbascpCheck.js"></script>
+<script type="text/javascript" src="resources/js/bpbascpMove.js"></script>
 </head>
 <body>
 	<div id="result">${result }</div>
@@ -26,7 +28,7 @@
 			<td align="center">
 				<table id="siteTitleArea2">
 					<tr>
-						<td><a href="index.do">빅데이터 플랫폼 기반 AI 융합 서비스 개발자 양성과정 카페</a></td>
+						<td><a href="index.go">빅데이터 플랫폼 기반 AI 융합 서비스 개발자 양성과정 카페</a></td>
 					</tr>
 				</table>
 			</td>

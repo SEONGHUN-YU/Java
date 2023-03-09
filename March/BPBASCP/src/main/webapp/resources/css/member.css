@@ -56,10 +56,31 @@
 	border: white solid 3px;
 }
 
+#joinTbl option {
+	color: black;
+}
+
 #regTbl button {
 	background-color: transparent;
 	color: white;
 	font-size: 17pt;
 	border: none;
 	margin: 20px;
+}
+
+#welcomeTbl {
+	width: 100%;
+}
+
+#welcomeTbl .td2 {
+	font-size: 17pt;
+	color: white;
+}
+
+#welcomeTbl img {
+	max-height: 35px;
+}
+
+#memberInfoImg {
+	max-width: 70%;
 }
