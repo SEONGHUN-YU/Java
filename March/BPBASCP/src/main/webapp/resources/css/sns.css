@@ -7,23 +7,109 @@
 	left: 0px;
 }
 
-#snsControlArea2 {
+#snsControlArea2, #snsSearchArea {
 	width: 400px;
+	border: white solid 3px;
 	background-color: #263238AA;
+}
+
+#snsSearchArea input {
+	width: 315px;
+	height: 40px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	padding: 10px;
 }
 
 #snsControlArea2 textarea {
 	width: 310px;
 	height: 150px;
 	background-color: transparent;
-	border: white solid 3px;
+	border: none;
 	color: white;
 	padding: 10px;
 }
 
-#snsControlArea2 button {
+#snsControlArea2 button, #snsSearchArea button {
 	background-color: transparent;
 	font-size: 15pt;
 	color: white;
 	border: none;
+}
+
+.aSNSPost {
+	width: 90%;
+	margin: 20px;
+}
+
+.aSNSPost .imgTd {
+	width: 100px;
+	padding-top: 10px;
+	background-color: #263238CC;
+}
+
+.aSNSPost img {
+	max-width: 90px;
+}
+
+.aSNSPost .idTd {
+	padding: 10px;
+	background-color: #263238CC;
+	color: white;
+}
+
+.aSNSPost .dateTd {
+	padding: 10px;
+	font-size: 9pt;
+	background-color: #FFFFFFEE;
+}
+
+.aSNSPost .txtTd {
+	padding: 20px;
+	font-size: 10pt;
+	background-color: #FFFFFFEE;
+}
+
+.aSNSPost .replyTd {
+	padding: 20px;
+	font-size: 9pt;
+	background-color: #FFFFFFEE;
+}
+
+.aSNSPost .buttonTd {
+	background-color: #FFFFFFEE;
+}
+
+.aSNSPost button {
+	margin: 7px;
+	background-color: transparent;
+	border: none;
+}
+
+#snsPaddingBottom {
+	width: 10px;
+	height: 250px;
+}
+
+.snsL {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 10px;
+	height: 100%;
+	background-color: red;
+}
+
+.snsR {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 10px;
+	height: 100%;
+	background-color: red;
+}
+
+.snsL:hover, .snsR:hover {
+	background-color: #FFFFFFAA;
 }

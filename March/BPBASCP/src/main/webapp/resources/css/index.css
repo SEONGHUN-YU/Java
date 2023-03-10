@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+::-webkit-scrollbar {
+	display: none; /* 이렇게 스크롤 바 없애는 게 가능 */
+}
+
 /* @font-face {
 	font-family: "b";
 	src: url("bread.ttf");
@@ -89,4 +93,9 @@ textarea {
 	font-size: 17pt;
 	font-weight: 900;
 	color: white; /* 글자 컬러 */
+}
+
+#snsPaddingBottom {
+	width: 10px;
+	height: 250px;
 }

@@ -54,4 +54,9 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="bo" class="com.yu.bpbascp.BPBASCPOptions">
+		<beans:property name="snsPostPerPage" value="10"></beans:property>
+		<beans:property name="dataroomFilePerPage" value="10"></beans:property>
+	</beans:bean>
+	
 </beans:beans>

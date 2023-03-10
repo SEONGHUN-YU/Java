@@ -121,3 +121,14 @@ function snsPostWriteCheck() {
 	}
 	return true;
 }
+
+function snsSearchCheck() {
+	let searchBox = document.snsSearchForm.search;
+
+	if (isEmpty(searchBox)) {
+		alert("1글자 이상 필수");
+		searchBox.focus();
+		return false;
+	}
+	return true;
+}
