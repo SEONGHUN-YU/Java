@@ -113,3 +113,10 @@
 .snsL:hover, .snsR:hover {
 	background-color: #FFFFFFAA;
 }
+
+.aSNSPost .replyTd .replyTxt {
+	background-color: transparent;
+	border: none;
+	border-bottom: black solid 3px;
+	width: 550px;
+}

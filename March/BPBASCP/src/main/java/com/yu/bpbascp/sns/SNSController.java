@@ -33,7 +33,7 @@ public class SNSController {
 	}
 
 	@RequestMapping(value = "/sns.post.write", method = RequestMethod.GET)
-	public String snsPostWrite(SNSPOST sp, HttpServletRequest req) {
+	public String snsPostWrite(SNSPost sp, HttpServletRequest req) {
 		if (mDAO.isLogined(req)) {
 			sDAO.writePost(sp, req);
 			sDAO.getPost(req, 1);
@@ -72,11 +72,25 @@ public class SNSController {
 	}
 
 	@RequestMapping(value = "/sns.post.delete", method = RequestMethod.GET)
-	public String snsPostDelete(SNSPOST s, HttpServletRequest req) {
+	public String snsPostDelete(SNSPost s, HttpServletRequest req) {
 		if (mDAO.isLogined(req)) {
 			sDAO.deletePost(s, req);
 			sDAO.clearSearch(req);
 			sDAO.getPost(req, 1);
+			TokenGenerator.generate(req);
+			req.setAttribute("contentPage", "sns/sns.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+
+	@RequestMapping(value = "/sns.reply.write", method = RequestMethod.GET)
+	public String snsReplyWrite(SNSReply sr, HttpServletRequest req) {
+		if (mDAO.isLogined(req)) {
+			sDAO.writeReply(sr, req);
+			sDAO.clearSearch(req); // ???
+			sDAO.getPost(req, 1); // ???
 			TokenGenerator.generate(req);
 			req.setAttribute("contentPage", "sns/sns.jsp");
 		} else {

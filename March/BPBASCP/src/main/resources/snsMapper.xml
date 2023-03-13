@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yu.bpbascp.sns.SNSMapper">
-	<select id="getPost" parameterType="com.yu.bpbascp.sns.SNSSelector" resultType="com.yu.bpbascp.sns.SNSPOST">
+	<select id="getPost" parameterType="com.yu.bpbascp.sns.SNSSelector" resultType="com.yu.bpbascp.sns.SNSPost">
 		select bm_id, bm_photo, bs_no,
 		bs_txt, bs_date
 		from
@@ -41,15 +41,24 @@
 	<select id="getPostCount" parameterType="com.yu.bpbascp.sns.SNSSelector" resultType="java.lang.Integer">
 		select count(*) from bpbascp_sns where bs_writer like '%'||#{search}||'%' or bs_txt like '%'||#{search}||'%'
 	</select>
+	<select id="getPostCountByWriter" parameterType="com.yu.bpbascp.member.Member" resultType="java.lang.Integer">
+		select count(*) from bpbascp_sns where bs_writer = #{bm_id}
+	</select>
 	<insert id="writePost"
-		parameterType="com.yu.bpbascp.sns.SNSPOST">
+		parameterType="com.yu.bpbascp.sns.SNSPost">
 		insert into bpbascp_sns
 		values(bpbascp_sns_seq.nextval,
 		#{bs_writer}, #{bs_txt}, sysdate)
 	</insert>
-	
-	<delete id="deletePost" parameterType="com.yu.bpbascp.sns.SNSPOST">
+	<delete id="deletePost" parameterType="com.yu.bpbascp.sns.SNSPost">
 		delete from bpbascp_sns where bs_no = #{bs_no}
 	</delete>
 	
+	<insert id="writeReply" parameterType="com.yu.bpbascp.sns.SNSReply">
+		insert into bpbascp_sns_reply
+		values(bpbascp_sns_reply_seq.nextval, #{bsr_bs_no}, #{bsr_writer}, #{bsr_txt}, sysdate)
+	</insert>
+	<select id="getReply" parameterType="com.yu.bpbascp.sns.SNSPost" resultType="com.yu.bpbascp.sns.SNSReply">
+		select * from bpbascp_sns_reply where bsr_bs_no in #{bs_no}
+	</select>
 </mapper>

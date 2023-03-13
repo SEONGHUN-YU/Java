@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#drControlArea {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+}
+
+#drControlArea2 {
+	width: 400px;
+	border: white solid 3px;
+	background-color: #263238AA;
+}
+
+#drControlArea2 input {
+	width: 250px;
+	background-color: transparent;
+	border: none;
+	color: white;
+	padding: 10px;
+	font-size: 12pt;
+}
+
+#drControlArea2 button {
+	background-color: transparent;
+	font-size: 13pt;
+	color: white;
+	border: none;
+}

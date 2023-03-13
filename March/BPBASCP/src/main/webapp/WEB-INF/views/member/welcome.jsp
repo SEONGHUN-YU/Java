@@ -13,7 +13,7 @@
 				&nbsp;<a href="sns.go"> <%-- 누르면 게시판 가기? --%>
 					<img src="resources/img/feed.png">
 				</a>&nbsp;&nbsp;
-				<a href="">
+				<a href="dataroom.go">
 					<img src="resources/img/folder.png">
 				</a>&nbsp;
 			</td>

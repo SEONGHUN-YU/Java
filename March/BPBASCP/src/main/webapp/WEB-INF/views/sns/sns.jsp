@@ -31,7 +31,23 @@
 				<td class="txtTd">${p.bs_txt }</td>
 			</tr>
 			<tr>
-				<td class="replyTd">댓글 기능 들어갈 곳</td>
+				<td class="replyTd">
+					<c:forEach var="r" items="${p.bs_replys }"> <%-- 이 부분 중요함 꼭 다시 해볼 것 --%>
+						<p style="height: 10px;">
+							<span class="replyWriter">${r.bsr_writer }&nbsp;&nbsp;</span>
+							${r.bsr_txt } -
+							<fmt:formatDate value="${r.bsr_date }" type="date" dateStyle="short"/>
+						</p>
+					</c:forEach>
+					<form action="sns.reply.write" onsubmit="return snsReplyWriteCheck(this);">
+						<%-- name="snsReplyWriteForm"을 지워버림, JS 함수로 this(form 자기 자신을 가르킴)을 받아서 넘겨줌 --%>
+						<span class="replyWriter">${sessionScope.loginMember.bm_id }&nbsp;</span>
+						<input name="token" value="${token }" type="hidden">
+						<input name="bsr_bs_no" value="${p.bs_no }" type="hidden">
+						<input name="bsr_txt" maxlength="120" class="replyTxt" autocomplete="off">
+						<button>댓글쓰기</button>
+					</form>
+				</td>
 			</tr>
 			<c:if test="${sessionScope.loginMember.bm_id == p.bm_id }">
 			<tr>
@@ -71,7 +87,7 @@
 					<table id="snsControlArea2">
 						<tr>
 							<td><textarea name="bs_txt" maxlength="250"></textarea><br></td>
-							<td><button>쓰기</button></td>
+							<td><button>글쓰기</button></td>
 						</tr>
 					</table>
 				</form>

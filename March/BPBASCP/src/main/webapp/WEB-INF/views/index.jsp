@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/member.css">
 <link rel="stylesheet" href="resources/css/sns.css">
+<link rel="stylesheet" href="resources/css/dataroom.css">
 <script type="text/javascript" src="resources/js/YUValidChecker.js"></script>
 <script type="text/javascript" src="resources/js/bpbascpCheck.js"></script>
 <script type="text/javascript" src="resources/js/bpbascpMove.js"></script>

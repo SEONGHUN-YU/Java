@@ -14,12 +14,16 @@ import org.springframework.stereotype.Service;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.yu.bpbascp.sns.SNSDAO;
+import com.yu.bpbascp.sns.SNSMapper;
 
 @Service
 public class MemberDAO {
 
 	@Autowired
 	private SqlSession ss;
+	@Autowired
+	private SNSDAO sDAO;
 
 	public void login(Member m, HttpServletRequest req) {
 		try {
@@ -170,10 +174,12 @@ public class MemberDAO {
 	public void bye(HttpServletRequest req) { // 탈퇴하기
 		try {
 			Member m = (Member) req.getSession().getAttribute("loginMember");
+			int PostCountByWriter = ss.getMapper(SNSMapper.class).getPostCountByWriter(m);
 			if (ss.getMapper(MemberMapper.class).bye(m) == 1) {
 				req.setAttribute("result", "탈퇴 성공");
 				new File(req.getSession().getServletContext().getRealPath("resources/img") + "/"
 						+ URLDecoder.decode(m.getBm_photo(), "utf-8")).delete(); // 톰캣에 저장된 이미지 파일은 utf-8 아니라서 디코딩 해준다
+				sDAO.setAllPostCount(sDAO.getAllPostCount() - PostCountByWriter);
 			} else {
 				req.setAttribute("result", "탈퇴 실패");
 			}

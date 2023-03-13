@@ -21,6 +21,14 @@ public class SNSDAO {
 	@Autowired
 	private BPBASCPOptions bo;
 
+	public int getAllPostCount() {
+		return allPostCount;
+	}
+
+	public void setAllPostCount(int allPostCount) {
+		this.allPostCount = allPostCount;
+	}
+
 	public void setAllPostCount() {
 		allPostCount = ss.getMapper(SNSMapper.class).getPostCount(new SNSSelector("", 0, 0));
 	}
@@ -49,7 +57,10 @@ public class SNSDAO {
 
 			SNSSelector sSel = new SNSSelector(search, start, end);
 
-			List<SNSPOST> posts = ss.getMapper(SNSMapper.class).getPost(sSel);
+			List<SNSPost> posts = ss.getMapper(SNSMapper.class).getPost(sSel);
+			for (SNSPost p : posts) {
+				p.setBs_replys(ss.getMapper(SNSMapper.class).getReply(p));
+			}
 			req.setAttribute("posts", posts);
 			req.setAttribute("pageCount", pageCount);
 			req.setAttribute("page", page);
@@ -58,7 +69,7 @@ public class SNSDAO {
 		}
 	}
 
-	public void writePost(SNSPOST s, HttpServletRequest req) {
+	public void writePost(SNSPost s, HttpServletRequest req) {
 		try {
 			String token = req.getParameter("token");
 			String lastSuccessToken = (String) req.getSession().getAttribute("successToken");
@@ -85,7 +96,7 @@ public class SNSDAO {
 		}
 	}
 
-	public void deletePost(SNSPOST s, HttpServletRequest req) {
+	public void deletePost(SNSPost s, HttpServletRequest req) {
 		try {
 			if (ss.getMapper(SNSMapper.class).deletePost(s) == 1) {
 				req.setAttribute("result", "글 삭제 성공");
@@ -97,5 +108,35 @@ public class SNSDAO {
 			e.printStackTrace();
 			req.setAttribute("result", "글 삭제 실패");
 		}
+	}
+
+	// 여기부터는 reply
+	public void getReply(SNSReply sr, HttpServletRequest req) { // rough
+		
+	}
+	
+	public void writeReply(SNSReply sr, HttpServletRequest req) {
+		try {
+			String token = req.getParameter("token");
+			String lastSuccessToken = (String) req.getSession().getAttribute("successToken");
+			if (lastSuccessToken != null && token.equals(lastSuccessToken)) {
+				req.setAttribute("result", "댓글 작성 실패");
+				return;
+			}
+			
+			Member m = (Member) req.getSession().getAttribute("loginMember");
+			sr.setBsr_writer(m.getBm_id());
+			if (ss.getMapper(SNSMapper.class).writeReply(sr) == 1) {
+				req.setAttribute("result", "댓글 작성 성공");
+				req.getSession().setAttribute("successToken", token);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "댓글 작성 실패");
+		}
+	}
+
+	public void deleteReply(HttpServletRequest req) { // rough
+
 	}
 }

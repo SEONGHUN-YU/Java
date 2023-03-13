@@ -18,7 +18,37 @@ create table bpbascp_sns(
 	bs_date date not null,
 	constraint sns_writer foreign key (bs_writer) references bpbascp_member(bm_id) on delete cascade
 );
+
+create table bpbascp_sns_reply(
+	bsr_no number(4) primary key,
+	bsr_bs_no number(3) not null,
+	bsr_writer varchar2(10 char) not null,
+	bsr_txt varchar2(300 char) not null,
+	bsr_date date not null,
+	constraint sns_reply foreign key (bsr_bs_no) references bpbascp_sns(bs_no) on delete cascade,
+	constraint sns_reply_writer foreign key (bsr_writer) references bpbascp_member(bm_id) on delete cascade
+);
+
+create table bpbascp_dataroom(
+	bd_no number(3) primary key,
+	bd_uploader varchar2(10 char) not null,
+	bd_title varchar2(50 char) not null,
+	bd_file varchar2(300 char) not null,
+	bd_date date not null,
+	constraint dataroom_uploader foreign key (bd_uploader) references bpbascp_member(bm_id) on delete cascade
+);
+
+drop table bpbascp_dataroom cascade constraint purge;
+drop sequence bpbascp_dataroom_seq;
+
+create sequence bpbascp_sns_reply_seq;
 create sequence bpbascp_sns_seq;
+create sequence bpbascp_dataroom_seq;
+
+select * from bpbascp_member;
+select * from bpbascp_sns;
+select * from bpbascp_sns_reply;
+select * from bpbascp_dataroom;
 
 -- --------------------------------------------------
 -- 아이디, 프사, 글번호, 글내용, 날짜
@@ -33,7 +63,7 @@ where bm_id = bs_writer; -- 이렇게 outer join 하면 안 됨
 
 select * 
 from(
-	select rownum as rn, bs_no, bs_writer, bs_txt, bs_date 
+	select rownum as rn, bs_no, bs_writer, bs_txt, bs_date
 	from(
 		select *
 		from bpbascp_sns
@@ -97,7 +127,10 @@ where bm_id in (
 
 where bm_id = bs_writer
 order by bs_date desc;
-
+-- --------------------------------------------------
+-- subquery : 줄어서
+-- join : 폭증해서
+-- join 최대한 안 쓰려고 해야
 -- --------------------------------------------------
 
 -- 모든 회원 정보 가져와서 검사?

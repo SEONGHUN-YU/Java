@@ -132,3 +132,33 @@ function snsSearchCheck() {
 	}
 	return true;
 }
+
+// <form> * 여러개가 snsReplyWriteCheck에 연결된 상태
+// f : 여러개 중에서 submit시도하는 바로 그 <form> -> snsReplyWriteCheck()를 호출한 <form>
+function snsReplyWriteCheck(f) {
+	// 이 html. 이름이 snsReplyWriteForm인 <form>. 이름이 bsr_txt인 <input>
+	// jstl for문이 돌고 있어서 이름이 snsReplyWriteForm인게 여러개 생겨버리고 중복되어버려서 문제가 생김
+	// let txtBox = document.snsReplyWriteForm.bsr_txt; <- 이 방식으로 불가능함
+	let txtBox = f.bsr_txt; // <- 이 방식으로 가능
+
+	if (isEmpty(txtBox)) {
+		alert("1글자 이상 필수");
+		txtBox.focus();
+		return false;
+	}
+	return true;
+}
+
+function drUploadCheck(f) {
+	let titleBox = f.bd_title;
+	let fileBox = f.bd_file;
+
+	if (isEmpty(titleBox) || isEmpty(fileBox)) {
+		alert("입력 필수");
+		titleBox.value = "";
+		fileBox.value = "";
+		titleBox.focus();
+		return false;
+	}
+	return true;
+}
