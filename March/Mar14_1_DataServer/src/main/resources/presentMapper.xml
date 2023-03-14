@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.mar141.print.PresentMapper">
+	<select id="get" resultType="com.yu.mar141.print.PresentBean">
+		select * from mar14_manager_request
+	</select>
+</mapper>
