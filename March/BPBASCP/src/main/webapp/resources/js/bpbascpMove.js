@@ -13,3 +13,7 @@ function snsPostDelete(bs_no) {
 		location.href = "sns.post.delete?bs_no=" + bs_no;
 	}
 }
+
+function drPageMove(curPage) {
+	location.href = "dataroom.page.move?p=" + curPage;
+}

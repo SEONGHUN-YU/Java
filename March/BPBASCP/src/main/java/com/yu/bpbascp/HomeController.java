@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.yu.bpbascp.dataroom.DataroomDAO;
 import com.yu.bpbascp.member.MemberDAO;
 import com.yu.bpbascp.sns.SNSDAO;
 
@@ -17,6 +18,8 @@ public class HomeController {
 	private MemberDAO mDAO;
 	@Autowired
 	private SNSDAO sDAO;
+	@Autowired
+	private DataroomDAO dDAO;
 
 	private boolean firstReq;
 
@@ -34,6 +37,7 @@ public class HomeController {
 	public String goIndex(HttpServletRequest req) {
 		if (firstReq) { // 첫 생성자 (사이트 처음으로 켜질 때) -> 첫 요청이 있을 때 select 하는 걸로 전략 바꿈
 			sDAO.setAllPostCount();
+			dDAO.setAllFileCount();
 			firstReq = false;
 		}
 //		req.setAttribute("loginPage", "member/login.jsp"); // 나중에 대체될 것

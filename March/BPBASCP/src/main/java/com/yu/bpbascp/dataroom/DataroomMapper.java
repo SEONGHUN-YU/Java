@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface DataroomMapper {
 	public abstract int upload(DataroomFile df);
-	public abstract List<DataroomFile> getFile();
+	public abstract List<DataroomFile> getFile(DataroomSelector ds);
+	public abstract int getAllFileCount();
 }

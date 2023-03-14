@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -186,5 +187,12 @@ public class MemberDAO {
 		} catch (Exception e) {
 			req.setAttribute("result", "탈퇴 실패");
 		}
+	}
+
+	public Members getMemberInfoJSON(Member m) {
+		m = ss.getMapper(MemberMapper.class).getMemberByID(m);
+		ArrayList<Member> members = new ArrayList<Member>();
+		members.add(m);
+		return new Members(members);
 	}
 }

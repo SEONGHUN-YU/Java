@@ -1,11 +1,13 @@
 package com.yu.bpbascp.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yu.bpbascp.DateManager;
 
@@ -63,7 +65,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member.info.update", method = RequestMethod.POST)
-	public String MemberInfoUpdate(Member m, HttpServletRequest req) {
+	public String memberInfoUpdate(Member m, HttpServletRequest req) {
 		if (mDAO.isLogined(req)) {
 			mDAO.update(m, req);
 			mDAO.splitAddress(req);
@@ -75,7 +77,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member.bye", method = RequestMethod.GET)
-	public String MemberBye(HttpServletRequest req) {
+	public String memberBye(HttpServletRequest req) {
 		if (mDAO.isLogined(req)) { // 로그인여부 체크
 			mDAO.bye(req); // DB에서 정보 삭제
 			mDAO.logout(req); // 세션 끊기
@@ -83,5 +85,12 @@ public class MemberController {
 		}
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
+	}
+
+	@RequestMapping(value = "/member.id.check", 
+			method = RequestMethod.GET, 
+			produces = "application/json; charset=utf-8")
+	public @ResponseBody Members memberIdCheck(Member m) {
+		return mDAO.getMemberInfoJSON(m);
 	}
 }

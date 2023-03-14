@@ -6,13 +6,11 @@
 	bottom: 0px;
 	left: 0px;
 }
-
 #drControlArea2 {
 	width: 400px;
 	border: white solid 3px;
 	background-color: #263238AA;
 }
-
 #drControlArea2 input {
 	width: 250px;
 	background-color: transparent;
@@ -21,10 +19,52 @@
 	padding: 10px;
 	font-size: 12pt;
 }
-
 #drControlArea2 button {
 	background-color: transparent;
 	font-size: 13pt;
 	color: white;
+	border: none;
+}
+.aDRFile {
+	width: 45%;
+	margin: 20px;
+	float: left;
+}
+
+.aDRFile .imgTd {
+	width: 100px;
+	padding-top: 10px;
+	background-color: #263238CC;
+}
+
+.aDRFile img {
+	max-width: 90px;
+}
+
+.aDRFile .idTd {
+	padding: 10px;
+	background-color: #263238CC;
+	color: white;
+}
+
+.aDRFile .dateTd {
+	padding: 10px;
+	font-size: 9pt;
+	background-color: #FFFFFFEE;
+}
+
+.aDRFile .txtTd {
+	padding: 10px;
+	font-size: 10pt;
+	background-color: #FFFFFFEE;
+}
+
+.aDRFile .buttonTd {
+	background-color: #FFFFFFEE;
+}
+
+.aDRFile button {
+	margin: 7px;
+	background-color: transparent;
 	border: none;
 }

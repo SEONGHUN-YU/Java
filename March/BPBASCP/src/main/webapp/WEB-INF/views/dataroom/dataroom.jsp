@@ -10,11 +10,12 @@
 </head>
 <body>
 	<c:if test="${page != 1 }">
-		<div class="snsL" onmouseleave="snsPageChange(${page - 1 });"></div>
+		<div class="snsL" onmouseleave="drPageMove(${page - 1 });"></div>
 	</c:if>
 	<c:if test="${page != pageCount }">
-		<div class="snsR" onmouseleave="snsPageChange(${page + 1 });"></div>
+		<div class="snsR" onmouseleave="drPageMove(${page + 1 });"></div>
 	</c:if>
+	
 	<c:forEach var="f" items="${files }">
 		<table class="aDRFile">
 			<tr>
@@ -32,7 +33,16 @@
 				<td class="txtTd">
 					<%-- a태그는 get방식요청이라는 거고, 주소만 알면 로그인 안 해도 된다?? --%>
 					<%-- 링크만 알면 뚫린다는 소린데, 아무나 받지 못하게 해야할 것 --%>
+					<%-- 
+						 <a> : GET방식 요청
+						 		1) 무조건 클릭해야 됨 - 다른 이벤트로 하려면?
+						 		2) 브라우저가 파일을 열 줄 모르면 다운받게 하고, 열 줄 알면 열어버림 - 아쉬운 점
+						 		3) 주소만 알면 요청이 되니 -> 로그인 체크가 무용지물
+						 => C쪽으로 요청시키게 하고 M에서 검사하는 식으로
+					--%>
 					<a href="resources/dataroom/${f.bd_file }">다운받기</a>
+					<br>
+					<a href="dataroom.download?bd_file=${f.bd_file }">다운받기</a> <%-- 이런식으로 --%>
 				</td>
 			</tr>
 			<c:if test="${sessionScope.loginMember.bm_id == f.bd_uploader }">
