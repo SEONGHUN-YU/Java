@@ -1,13 +1,36 @@
 @charset "UTF-8";
 
+#popupArea {
+	position: fixed;
+	top: -100%;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	background-color: #000000BB;
+	transition: opacity 0.5s ease-out;
+}
+
+#snsHandle {
+	position: fixed;
+	color: white;
+	bottom: 0px;
+	width: 90px;
+	height: 25px;
+	cursor: pointer;
+	padding: 5px;
+	border: white solid 3px;
+}
+
 #snsControlArea {
 	position: fixed;
 	width: 100%;
-	bottom: 0px;
+	bottom: -255px;
 	left: 0px;
+	transition: all 0.5s ease-out;
 }
 
-#snsControlArea2, #snsSearchArea {
+#snsControlArea2, #snsSearchArea, #snsUpdateArea {
 	width: 400px;
 	border: white solid 3px;
 	background-color: #263238AA;
@@ -22,7 +45,7 @@
 	padding: 10px;
 }
 
-#snsControlArea2 textarea {
+#snsControlArea2 textarea, #snsUpdateArea textarea {
 	width: 310px;
 	height: 150px;
 	background-color: transparent;
@@ -31,7 +54,7 @@
 	padding: 10px;
 }
 
-#snsControlArea2 button, #snsSearchArea button {
+#snsControlArea2 button, #snsSearchArea button, #snsUpdateArea button {
 	background-color: transparent;
 	font-size: 15pt;
 	color: white;

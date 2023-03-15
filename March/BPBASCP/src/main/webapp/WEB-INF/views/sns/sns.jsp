@@ -16,7 +16,6 @@
 		<div class="snsR" onmouseleave="snsPageMove(${page + 1 });">&gt;</div>
 	</c:if>
 	<c:forEach var="p" items="${posts }">
-	 <%-- <form action=""> update용도 form --%>
 		<table class="aSNSPost">
 			<tr>
 				<td rowspan="4" align="center" class="imgTd" valign="top"><img
@@ -52,16 +51,20 @@
 			<c:if test="${sessionScope.loginMember.bm_id == p.bm_id }">
 			<tr>
 				<td align="right" colspan="2" class="buttonTd">
-					<button>수정</button>
+					<button class="snsUpdateBtn">수정</button>
 					<button onclick="snsPostDelete(${p.bs_no });">삭제</button>
 				</td>
 			</tr>
 			</c:if>
 		</table>
-	<%-- </form> --%>
 	</c:forEach>
 	<div id="snsPaddingBottom"></div>
 	<table id="snsControlArea">
+		<tr>
+			<td align="center">
+				<div id="snsHandle">열기 / 닫기</div>
+			</td>
+		</tr>
 		<tr>
 			<td align="center">
 				<form name="snsSearchForm" onsubmit="return snsSearchCheck();" action="">
@@ -88,6 +91,26 @@
 						<tr>
 							<td><textarea name="bs_txt" maxlength="250"></textarea><br></td>
 							<td><button>글쓰기</button></td>
+						</tr>
+					</table>
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+	<table id="popupArea">
+		<tr>
+			<td align="center">
+				<form action=""> <%-- 수 정 해 야 할 부 분 --%>
+					<input name="token" value="${token }" type="hidden">
+					<table id="snsUpdateArea">
+						<tr>
+							<td>
+								<textarea name="bs_txt" maxlength="250"></textarea>
+							</td>
+							<td>
+								<button>쓰기</button>
+							</td>
 						</tr>
 					</table>
 				</form>
