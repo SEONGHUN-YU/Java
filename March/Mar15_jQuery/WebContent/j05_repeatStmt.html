@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// HTML DOM객체 대상 => XML파싱
+		// $(선택자).each(func(인덱스, 값){}); // 아까는 선택자가 없었음, 그 때는 list랑 object가 대상
+		$("h1").each(function(iii, ppp) {
+			$(ppp).css("font-size", (iii + 1) * 10 + "pt");
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>ㅋㅋㅋ</h1> <!-- 0번째 -->
+	<h1>ㅎㅎㅎ</h1>
+	<h1>ㅇㅇ</h1> <!-- length-1번째 -->
+</body>
+</html>

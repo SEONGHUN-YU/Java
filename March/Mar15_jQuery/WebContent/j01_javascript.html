@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// front-end 웹개발 : JavaScript
+	// 1. interpreter 방식 -> 에러잡기가 힘듬
+	// 2. 문법이 긴 편
+	// 3. HTML DOM객체 직접 찾아가서 on시리즈로 이벤트 연결
+	//		HTML이 길면 그거 찾는 것도 힘듬
+	// => JavaScript가 인기가 없었음(과거에)
+	// => jQuery가 나오면서 분위기가 완전 반전됨 => react/vue로 넘어가는 중
+	
+	// 엔터, 띄어쓰기 : 의미없음, 가독성을 위한 것
+	// \r\n : 용량만 늘뿐
+	var abcInput = null;
+	function loadInput() {
+		// 이 html에서 id가 abc인 객체
+		abcInput = document.getElementById("abc");
+	}
+
+	function showAlert() {
+		alert(abcInput.value);
+	}
+</script>
+</head>
+<body onload="loadInput();">
+	<input id="abc">
+	<button>버튼</button>
+	<button onclick="showAlert();">버튼2</button>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var cssArr = [
+			{ color: "white", bgColor: "black" },
+			{ color: "yellow", bgColor: "red" },
+			{ color: "green", bgColor: "blue" }
+		];
+		
+		$.each(cssArr, function(i, p) { // 클래식 for문만으로는 div[0] 에는 접근 못한다
+			alert("color", p.color);
+			alert("background-color", cssArr[i].bgColor);
+		});
+		
+		$("div").each(function(ii, pp) {
+			$(pp).css("color", cssArr[ii].color).css("background-color", cssArr[ii].bgColor);
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<div>ㅋㅋㅋ</div>
+	<div>ㅎㅎㅎ</div>
+	<div>ㅇㅇ</div>
+</body>
+</html>

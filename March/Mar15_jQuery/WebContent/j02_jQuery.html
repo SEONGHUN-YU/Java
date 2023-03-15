@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// JavaScript : HTML DOM객체 이벤트 처리 하려고 쓰는 거
+	
+	// jQuery(셀렉터).이벤트(콜백함수); // 셀렉터는 선택자 라고 부르기도 함
+	// $(선택자).이벤트(콜백함수);
+	//	선택자
+	//		기존에 쓰던 JavaScript 객체가 들어갈 수 있음
+	//		"CSS선택자"가 들어갈 수 있음
+	//	이벤트
+	//		원래 JS에서 이벤트 연결하는 게 on시리즈였는데, 거기서 on만 떼고(빼고) 쓰면 됨
+	
+	
+	//	콜백함수
+	//		어떤 이벤트에 연결되어 있어서, 그 이벤트가 발생하면 자동호출되는 함수
+	//	콜백함수를 이용한, 이벤트 드리븐 프로그래밍
+	
+	// $().이벤트(func(){});
+	
+	// $(document).ready(function abcd(){ // <- 이거 함수명 그닥 안 중요함, Spring의 컨트롤러 method명 하고 같은 수준
+	//	 	alert("zxczx");				   // 함수명을 선언조차 안 해도 별로 상관없을 것
+	// }); // body onload에 해당 -> 실질적으로 Java의 main() 역할
+		// jQuery 작업한다면 저건 무조건 있을건데
+		// 뭔가 문법이 길다 -> 그러다보니 나온지 얼마 안 돼서 새로운 문법이 나옴
+	$(function() { // 함수명을 없애봄
+		// document.getElementById("b2"); -> $("#b2")
+		var iiInput = $("#ii");
+		
+		// id가 b2인 DOM객체의 클릭 이벤트에 abcd 함수를 연결해놓은 것
+		// 앞으로 id가 b2인 DOM객체에 클릭이벤트가 발생하면
+		// abcd 함수가 자동으로 불러짐
+		$("#b2").click(function abcd() {
+			// Java : iiInput.getVal();
+			//		  iiInput.setVal("asd");
+			// jQuery : getter/setter 따로 안 하고(없고)
+			//			overloading으로 처리함
+			alert(iiInput.val()); // iiInput.value랑 같음
+			iiInput.val(""); // 이런식으로 하면 alert 출력하고나서 값이 공백이 되는 그런 식
+			
+			iiInput.val(); // 안 집어넣으면 getter처럼 됨
+			iiInput.val("zzz"); // 집어넣으면 setter처럼 됨
+			
+			$("#b1").click(function defg() { // b2의 이벤트가 실행돼야 b1에 이벤트가 연결되기 시작함
+				alert("b1");
+			});
+		});
+	}); // body에 있는 거 다 나오고 나서 실행함, main()역할, 신형 문법
+</script>
+</head>
+<body>
+	<input id="ii">
+	<button id="b1">버튼</button>
+	<button id="b2">버튼2</button>
+</body>
+</html>

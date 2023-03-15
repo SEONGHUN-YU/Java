@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// eclipseIDE : JavaScript 작업에 좋은 툴은 아님
+	// ctrl + shift + f 누르면 망함
+	$(function() {
+		$("#b1").click(function() {
+			// css조절도 가능, .css("속성명", "값"), chain도 걸 수 있음(가독성 때문에 별로 추천은 안 함)
+			$("div").css("background-color", "yellow").css("color", "black"); //.click();
+		});
+		
+		// 한번 누르면 100 x 100이 됐다가 또 누르면 200 x 200이 됐다가
+		var is200 = true;
+		$("#b2").click(function() {
+			if (is200) {
+				$("div").css("width", "100px");
+				$("div").css("height", "100px");
+			} else {
+				$("div").css("width", "200px");
+				$("div").css("height", "200px");
+			}
+			is200 = !is200;
+		});
+		
+		// JavaScript의 타이머 계열
+		//		setTimeout(함수, 시간[1000분의 1초]) : 딜레이 주는 용도
+		//		setInterval(함수, 시간[1000분의 1초]) : 반복용도, 세팅한 시간마다 세팅한 함수를 호출
+		//		clearInterval(변수명) : setInterval 멈추기
+		$("#b3").click(function() {
+			setTimeout(function() {
+				var w = $("img").css("width");
+				if (w == "100px"){
+					$("img").css("width", "30px").css("height", "30px");
+				} else {
+					$("img").css("width", "100px").css("height", "100px");
+				}
+			}, 2000);
+		});
+		
+		// JavaScript의 랜덤
+		//		Math.random() : 0.0 ~ 1.0 직전까지(0.999...)
+		//		Math.round() : 반올림해서 정수로		
+		var timer = null;
+		$("#b4").click(function() {
+			timer = setInterval(function() {
+				var l = Math.random() * 1900;
+				var t = Math.random() * 1000;
+				$("img").css("left", l + "px");
+				$("img").css("top", t + "px");
+			}, 1000);
+		});
+		
+		$("#b5").click(function() {
+			clearInterval(timer);
+		});
+		
+	});
+</script>
+<style type="text/css">
+div {
+	width: 200px;
+	height: 200px;
+	background-color: black;
+	color: white;
+	/* CSS3에 애니메이션이[속성이 바뀌는 과정이 나오는 거] 추가됨 */
+	/* 갑자기 팟하고 바뀌지말고 바뀌는 걸 천천히 보여주도록 */
+	transition: width 1s ease-in;
+	/* 		  속성명 시간 가감속 */
+	/*  		all		  ease-in : 점점 빨라지는 움직임 */
+	/*  				  ease-out : 점점 느려지는 */
+	/*  				  linear : 등속 */
+}
+img {
+	position: absolute; /* fixed, absolute */
+	transition: all 0.3s ease-out;
+}
+</style>
+</head>
+<body>
+	<img src="ball_2.png">
+	<hr>
+	<button id="b3">버튼3</button>
+	<button id="b4">버튼4</button>
+	<button id="b5">버튼5</button>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<hr>
+	<div></div>
+	<hr>
+	jQuery 배우기 전에는
+	C에 갔다오면서 화면에 변화생기는 거 - o
+	그냥 그 자리에서 화면에 변화생기는 거 - x <- 이걸 jQuery가 담당함
+</body>
+</html>

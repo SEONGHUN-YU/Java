@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	
+	function btnColorChange() {
+		// 이 html에 있는 모든 button들의 click 이벤트와 aaa라는 콜백함수를 연결
+		$("button").click(function aaa() {
+			// 눌러진 버튼만 빨갛게
+			$(this).css("background-color", "red");
+			// 눌러진 버튼이 소속된(한 단계 상위의) td를 노랗게
+			$(this).parent().css("background-color", "yellow");
+			// 눌러진 버튼이 소속된 table의 width를 500px로
+			$(this).closest("table").css("width", "500px");
+		});
+	}
+	
+	function tdColorChange() {
+		$("td").click(function() {
+			// 눌러진 td를 녹색으로
+			$(this).css("background-color", "green");
+			// td누르면 td안에 들어있는 input, button들을 블랙으로
+			$(this).children().css("background-color", "black");
+			// td누르면 td안에 들어있는 input 글자색 흰색으로
+			$(this).find("input").css("color", "white");
+		});
+	}
+	
+	function showAlert() {
+		$("button").click(function() { // A's Knowledge .prev()
+			// button 누르면 옆에 있는 input 안에 쓰여진 값이 alert 되도록
+			var txt = $(this).parent().find("input").val() // 왔다갔다해서 지정해야 함
+			alert(txt);
+		});
+	}
+	
+	$(function() {
+		// 객체 선택
+		//		$(기존 JS객체)
+		//		$("CSS선택자")
+		
+		//		$(this) : 콜백함수를 부른 장본인 == 이벤트 발생한 녀석
+		
+		//		.parent() : 한 단계 상위의 것을 가르킴
+		//		.closest("CSS선택자") : 가장 가까운 상위의 CSS선택자를 대상으로 지정함
+		
+		//		.children() : 하위의 것들 싸그리 다 ex) tr안에 포함된 td, input, button ...
+		//		.find("CSS선택자") : 하위의 CSS선택자를 대상으로 지정함
+		
+		btnColorChange();
+		tdColorChange();
+		showAlert();
+	});
+</script>
+<style type="text/css">
+td {
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><input>
+				<button>버튼1</button></td>
+		</tr>
+		<tr>
+			<td><input>
+				<button>버튼2</button></td>
+		</tr>
+		<tr>
+			<td><input>
+				<button>버튼3</button></td>
+		</tr>
+	</table>
+	<br>
+	<table border="1">
+		<tr>
+			<td><input>
+				<button>버튼4</button></td>
+		</tr>
+		<tr>
+			<td><input>
+				<button>버튼5</button></td>
+		</tr>
+		<tr>
+			<td><input>
+				<button>버튼6</button></td>
+		</tr>
+	</table>
+</body>
+</html>
