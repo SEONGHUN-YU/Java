@@ -20,9 +20,16 @@ function connectSNSControlAreaSummonEvent() {
 }
 
 function connectSNSUpdateFormSummonEvent() {
-	$(".snsUpdateBtn").click(function() {
-		$("#popupArea").css("top", "0px").css("left", "0px");
-		$("#popupArea").css("opacity", "1");
+//	$(".snsUpdateBtn").click(function() { // jQuery말고 JavaScript로 처리해야 하는 상황이 와서, 지워둠
+//		$("#popupArea").css("top", "0px").css("left", "0px");
+//		$("#popupArea").css("opacity", "1");
+//	});
+	
+	$("#suaCloseBtn").click(function() {
+		$("#popupArea").css("opacity", "0");
+		setTimeout(function() {
+			$("#popupArea").css("top", "-100%").css("left", "-100%");
+		}, 300);
 	});
 }
 

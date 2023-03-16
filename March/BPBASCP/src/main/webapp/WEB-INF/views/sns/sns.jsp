@@ -51,7 +51,7 @@
 			<c:if test="${sessionScope.loginMember.bm_id == p.bm_id }">
 			<tr>
 				<td align="right" colspan="2" class="buttonTd">
-					<button class="snsUpdateBtn">수정</button>
+					<button onclick="showSnsUpdatePopup(${p.bs_no }, '${p.bs_txt }');" class="snsUpdateBtn">수정</button>
 					<button onclick="snsPostDelete(${p.bs_no });">삭제</button>
 				</td>
 			</tr>
@@ -101,12 +101,18 @@
 	<table id="popupArea">
 		<tr>
 			<td align="center">
-				<form action=""> <%-- 수 정 해 야 할 부 분 --%>
+				<form action="sns.post.update">
 					<input name="token" value="${token }" type="hidden">
+					<input id="snsUpdateBsNo" name="bs_no" type="hidden"> <%-- 수정 해야 할 부분 --%>
 					<table id="snsUpdateArea">
 						<tr>
+							<td align="right" colspan="2" id="suaCloseBtn">
+								X
+							</td>
+						</tr>
+						<tr>
 							<td>
-								<textarea name="bs_txt" maxlength="250"></textarea>
+								<textarea id="snsUpdateBsTxt" name="bs_txt" maxlength="250"></textarea>
 							</td>
 							<td>
 								<button>쓰기</button>

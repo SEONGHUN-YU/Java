@@ -110,11 +110,24 @@ public class SNSDAO {
 		}
 	}
 
+	public void updatePost(SNSPost s, HttpServletRequest req) { // rough
+		try {
+			if (ss.getMapper(SNSMapper.class).updatePost(s) == 1) {
+				req.setAttribute("result", "글 수정 성공");
+			} else {
+				req.setAttribute("result", "글 수정 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "글 수정 실패");
+		}
+	}
+
 	// 여기부터는 reply
 	public void getReply(SNSReply sr, HttpServletRequest req) { // rough
-		
+
 	}
-	
+
 	public void writeReply(SNSReply sr, HttpServletRequest req) {
 		try {
 			String token = req.getParameter("token");
@@ -123,7 +136,7 @@ public class SNSDAO {
 				req.setAttribute("result", "댓글 작성 실패");
 				return;
 			}
-			
+
 			Member m = (Member) req.getSession().getAttribute("loginMember");
 			sr.setBsr_writer(m.getBm_id());
 			if (ss.getMapper(SNSMapper.class).writeReply(sr) == 1) {

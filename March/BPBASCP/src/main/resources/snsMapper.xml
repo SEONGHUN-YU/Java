@@ -61,4 +61,7 @@
 	<select id="getReply" parameterType="com.yu.bpbascp.sns.SNSPost" resultType="com.yu.bpbascp.sns.SNSReply">
 		select * from bpbascp_sns_reply where bsr_bs_no in #{bs_no}
 	</select>
+	<update id="updatePost" parameterType="com.yu.bpbascp.sns.SNSPost">
+		update bpbascp_sns set bs_txt = #{bs_txt} where bm_no = #{bm_no} and bm_writer = #{bm_writer}
+	</update>
 </mapper>

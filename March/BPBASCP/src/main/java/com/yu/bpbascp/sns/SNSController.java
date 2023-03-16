@@ -98,4 +98,16 @@ public class SNSController {
 		}
 		return "index";
 	}
+
+	@RequestMapping(value = "/sns.post.update", method = RequestMethod.GET)
+	public String snsPostUpdate(SNSPost s, HttpServletRequest req) { // rough
+		if (mDAO.isLogined(req)) {
+			sDAO.updatePost(s, req);
+			TokenGenerator.generate(req);
+			req.setAttribute("contentPage", "sns/sns.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
 }

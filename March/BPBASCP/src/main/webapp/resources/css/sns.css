@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+#suaCloseBtn {
+	color: white;
+	font-size: 15pt;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
 #popupArea {
 	position: fixed;
 	top: -100%;
