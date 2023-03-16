@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+
+	// AJAX : 파싱해서 jQuery로 html을 만들어내야 함
+	
+	function createDOM() {
+		$("#btn").click(function() {
+			var name = $("#name").val();
+			var price = $("#price").val();
+			
+			var nameTd = $("<td></td>").text(name);
+			var priceTd = $("<td></td>").text(price);
+			
+			var tr = $("<tr></tr>").append(nameTd, priceTd);
+			$("table").append(tr);
+			
+			$("#name").val(""); // 다음에 작성하기 편하게 값을 지워둠
+			$("#price").val("");
+		});
+	}
+
+	function createReverseDOM() {
+		$("#btnReverse").click(function() {
+			var name = $("#name").val();
+			var price = $("#price").val();
+			
+			var nameTd = $("<td></td>").text(name);
+			var priceTd = $("<td></td>").text(price);
+			var tr = $("<tr></tr>").append(nameTd, priceTd);
+			
+			var nameTh = $("<th></th>").text("메뉴명");
+			var priceTh = $("<th></th>").text("가격");
+			var trTh = $("<tr></tr>").attr("id", "titleTr").append(nameTh, priceTh);
+			$("#titleTr").remove(); // 불필요하지만 정렬을 위해 일단 만들고 삭제하는 기법
+			$("table").prepend(trTh, tr);
+			
+			$("#name").val("");
+			$("#price").val("");
+		});
+	}
+
+	$(function() {
+		createDOM();
+		createReverseDOM();
+	});
+</script>
+</head>
+<body>
+	메뉴명 : <input id="name"><br>
+	가격 : <input id="price"><br>
+	<button id="btn">등록</button>
+	<button id="btnReverse">역순등록</button>
+	<hr>
+	<table border="1">
+	</table>
+</body>
+</html>

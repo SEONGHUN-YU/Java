@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.aaa {
+	color: red;
+	background-color: black;
+	font-size: 20pt;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	function updateAttribute() {
+		// <태그명 속성명1="값1" 속성명2="값2">텍스트</태그명> <- DOM객체의 모습
+		$("#b1").click(function() {
+			// 속성 수정 : .attr("속성명", "값");
+			$("a").attr("href", "https://www.google.co.kr");
+		});
+
+		$("#b2").click(function() {
+			// 속성 추가 : .attr("속성명", "값"); (수정할 때와 같은 문법 사용)
+			$("a").attr("class", "aaa"); // 기존에 없던 걸 추가해주는 것도 가능함
+		});
+	}
+
+	function updateExample() {
+		var i = 0;
+		setInterval(function() { // 함수 반복 실행용도
+			i++;
+			if (i == 15) {
+				i = 1;
+			}
+			$("img").attr("src", "hero/hero_kick_super_0" + i + ".png");
+		}, 50);
+	}
+
+	function deleteAttribute() {
+		// 속성 삭제 : .removeAttr("속성명");
+		$("#b3").click(function() {
+			$("a").removeAttr("href"); // href 속성 자체를 없애버림 (값도 함께 삭제됨)
+										// 값만 없애려면 수정을 활용 .attr("속성명", "");
+		});
+	}
+
+	function likeGetter() {
+		$("#b4").click(function() {
+			var h = $("a").attr("href"); // getter처럼 값을 가져올 수도 있음, .val()과 마찬가지
+			alert(h);
+		});
+	}
+
+	// jQuery
+	//		기본사항[문법, 반복문, ..., 한계점(JS써야하는 상황)]
+	//		기존 JS로도 할 수 있는데 수업을 안 했을 뿐
+	//			jQuery로 할 수 있는 거 : CSS 수정배움
+	$(function() {
+		updateAttribute();
+		// updateExample();
+		deleteAttribute();
+		likeGetter();
+	});
+</script>
+</head>
+<body>
+	<img>
+	<a href="https://www.naver.com">네이버로</a>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<button id="b3">버튼3</button>
+	<button id="b4">버튼4</button>
+</body>
+</html>

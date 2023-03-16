@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// 움직임 관련 <- 키보드는 이게 없지
+
+	function downAndUp() { // 키 누르기 관련
+		$("input").keydown(function(e) { // 누를 때 (키보드 자판 눌러서 음푹 들어갈 때)
+			$("h1").text("keydown");
+			if (e.keyCode == 65) { // a가 눌릴 때, 안 써지도록 return false;
+				return false;
+			}
+		});
+
+		// 키보드 기능 발동 시점 : keydown ~ keyup 사이
+		// 그래서 .keydown() 시점에 return false; 를 해두어야 글자쓰는 것을 막을 수 있다
+	
+		$("input").keyup(function(e) { // 뗄 때 (키보드 자판에서 손 떼서 원래대로 돌아올 때)
+			// 키보드 아스키 값 : 각 키마다 정해진 값
+			// e.keyCode로 그 값을 가져올 수 있다
+			$("h1").text("keyup : " + e.keyCode);
+		});
+	}
+
+	function showAlert() {  // 입력하고 엔터치면 입력한 내용이 alert 되도록
+		$("input").keyup(function(e) {
+			if (e.keyCode == 13) {
+				alert($(this).val());
+			}
+		});
+	}
+	
+	function moveImg() { // 화살표 버튼을 누르면 이미지가 움직이도록
+		var top = 0;
+		var left = 0;
+		$("html").keydown(function(e) { // 범위를 언제든지로 하려면 $("html")로
+			if (e.keyCode == 37) {
+				left -= 10;
+				$("img").css("left", left + "px");
+			} else if (e.keyCode == 38) {
+				top -= 10;
+				$("img").css("top", top + "px");
+			} else if (e.keyCode == 39) {
+				left += 10;
+				$("img").css("left", left + "px");
+			} else if (e.keyCode == 40) {
+				top += 10;
+				$("img").css("top", top + "px");
+			}
+		});
+	}
+
+	$(function() {
+		downAndUp();
+		showAlert();
+		moveImg();
+	});
+</script>
+<style type="text/css">
+img {
+	position: fixed;
+}
+</style>
+</head>
+<body>
+	<img src="hero/ball_2.png">
+	<input>
+	<hr>
+	<h1>ㅋ</h1>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+
+	// 1. 함수 호출때 값 전달이 필요할 때
+	// 2. jQuery로 추가되는 객체의 이벤트처리 <- jQuery의 한계?
+	// 이 2가지 경우에는 기존 JavaScript 스타일로 처리해야할 것
+
+	function createButton() {
+		$("button").click(function() { // <- 이 html이 만들어질 시점에 존재하는 button들의 클릭 이벤트에 함수 연결해두기
+			var b = $("<button></button>").text("버튼");
+			$("body").append(b);  // id로도 class로도 실패했다
+		});
+		
+		// $("button").trigger("click", function() { // 이런 문법도 있는데 (이 필기는 완전한 형태의 모습이 아님)
+		 											//	parameter로 값을 전달 못한다는 단점이 있다
+		//	 var btn = $("<button></button>").text("버튼");
+		//	 $("body").append(btn);
+		// });
+	}
+	
+	function addBtn() { // 이런식으로 하면 addBtn(값); 의 형태로 값도 전달해줄 수 있다
+			var btn = $("<button></button>").attr("onclick", "addBtn();").text("버튼");
+			$("body").append(btn);
+	}
+	
+	$(function() {
+		// 버튼 누르면 새 버튼이 추가되게
+		// createButton(); fail이지만 참고용으로 남겨둠
+		addBtn();
+	}); // body에 있는 거 다 나오고 나서 실행시키는 영역
+</script>
+</head>
+<body>
+	<button onclick="addBtn();">버튼</button>
+</body>
+</html>

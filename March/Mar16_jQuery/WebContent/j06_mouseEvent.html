@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+
+	// $("div").click(function(){}); // 이 click은 너무 퉁치는 느낌?, 세세하게 알아보자
+
+	function click() { // 1. 마우스 클릭 관련 이벤트
+		// jQuery에서 이벤트 연결에 쓰이는 콜백함수 첫번째 parameter <- 여기에는 보통 e 라는 식별자를 쓴다고 함
+		//		: 이벤트 객체이다
+		$("div").mousedown(function(abc) { // 누를 때
+			$("#h11").text("mousedown : " + abc.button);
+		});
+
+		$("div").mouseup(function name(e) { // 손 뗄 때
+			$("#h11").text("mouseup : " + e.button);
+		});
+	}
+	
+	function move() { // 2. 마우스 움직임 관련 이벤트
+		$("div").mouseenter(function() { // 공간안으로 들어올 때
+			$("#h12").text("mouseenter");
+		});
+		
+		$("div").mousemove(function(e) { // 공간안에서 1px이라도 움직일 때마다
+			var x = e.pageX; // 좌표의 기준이 html 기준(브라우저 구석탱이)임, 객체 기준X <- 중요
+			var y = e.pageY;
+			$("#h12").text(x + ", " + y);
+		});
+		
+		$("div").mouseleave(function() { // 공간안에서 바깥으로 나갈 때
+			$("#h12").text("mouseleave");
+		});
+		
+		$("html").mousemove(function(e) {
+			var x = e.pageX + 5, y = e.pageY + 5; // 좌표를 약간 빗겨가게 해야 다른 것들을 누를 수 있다
+												// 안 그러면 이미지가 바로 밑에 있어서 이미지를 누르는 게 되어버림
+			$("img").css("top", y + "px").css("left", x + "px");
+		});
+	}
+	
+	function whenRightClick() {
+		// 웹페이지에서 우클릭했을 때 우클릭 메뉴 안 나오게 막기 <- 이건 엄밀히 따지면, 마우스 관련 이벤트는 아님
+		// 정확히 말하자면, 우클릭 했을 때, 기본 브라우저 메뉴가 나오게 되어있는데, 그거 나올 때 발생하는 이벤트임
+		$(document).contextmenu(function() { // <- #2에 가까움
+			return false;
+		});
+
+		$("html").mouseup(function(e) {
+			if (e.button == 2) { // 우클릭 시
+				$("table").css("top", e.pageY + 5 + "px").css("left", e.pageX + 5 + "px").css("opacity", "1");
+				setTimeout(function() {
+					$("table").css("top", "0px").css("left", "0px").css("opacity", "0");
+				}, 1000);
+			}
+		});
+	}
+	
+	$(function() {
+		// 어떤 액션을 했을 때, 기본적으로 아무 일도 안 일어나는 애들도 있고 #1
+		// 어떤 액션을 했을 때, 기본적으로 어떤 이벤트가 일어나는 애들도 있다 #2
+
+		// 어떤 액션을 했을 때 기본적으로 어떤 동작이 있는 이벤트 <- #2인 애들을 말함
+		//		return true; <- 원래대로 작동함 
+		//		return false; <- 기본 이벤트(원래 기능)가 막힘
+		
+		click();
+		move();
+		whenRightClick();
+	});
+</script>
+<style type="text/css">
+div {
+	width: 200px;
+	height: 200px;
+	border: black solid 3px;
+}
+
+img {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+table {
+	position: fixed;
+	top: -300px;
+	left: -300px;
+	opacity: 0;
+}
+</style>
+</head>
+<body>
+	<img src="hero/ball_2.png">
+	<div></div>
+	<h1 id="h11">ㅋ</h1>
+	<h1 id="h12">ㅋ</h1>
+	<table>
+		<tr>
+			<td>
+				<a href="https://www.naver.com">네이버로</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="https://www.google.co.kr/">구글로</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="https://www.daum.net/">다음으로</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+
+	//마우스, 키보드 외에 잡다한 이벤트들
+
+	function etcEvent() {
+		$("select").change(function() { // select에서 선택한 것을 바꿨을 때
+			alert($(this).val());
+		});
+		
+		$(window).resize(function() { // 브라우저의 사이즈가 바뀔 때 ()
+			alert("브라우저 사이즈 바뀜"); // <- 이런 게 있다 정도만, 자세히 다루지는 않을 것
+		});
+	}
+	
+	function scrollEvent() { // <- 이거는 알아두면 좋아보임
+		$(window).scroll(function() { // 스크롤 했을 때
+			var htmlHeightRed = $(document).height();
+			var browserHeightGreen = $(window).height();
+			var scrollOffsetBlue = $(window).scrollTop();
+			var scrollOffsetBottomPurple = scrollOffsetBlue + browserHeightGreen;
+			if (htmlHeightRed - 10 <= scrollOffsetBottomPurple) { // 바닥에 닿는 시점 == (htmlHeightRed == scrollOffsetBottomPurple)
+				// ↑ 좀 여유를 준 것
+				var h1 = $("<h1></h1>").text("이런 식");
+				$("body").append(h1);
+			}
+		});
+	}
+	
+	$(function() {
+		// JS내장객체
+		//		document : 이 html 그 자체
+		//		navigator : 브라우저 (back-end 쪽, 브라우저의 기능적인 쪽을 담당함)
+		//		window : 브라우저 (front-end 쪽, 브라우저의 디자인적인 쪽을 담당함)
+		
+		// SPA(Single Page Application)
+		//		사이트 전체가 한 페이지로 되어있음 (스크롤 기반으로 되어있는 게 특징)
+		//		메뉴에서 버튼을 누르면 해당 좌표로 강제 스크롤 시키는 형식 <- 이런 게 요즘 유행이라나
+		//		react/vue : SPA에 특화
+		
+		// etcEvent();
+		scrollEvent();
+	});
+</script>
+</head>
+<body>
+	<select>
+		<option>키링</option>
+		<option>사탕</option>
+		<option>하겐다즈</option>
+	</select>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
