@@ -3,7 +3,7 @@ create table mar14_manager_request(
 	mr_price number(6) not null
 );
 
-insert into mar14_manager_request values('하하', 4321);
+insert into mar14_manager_request values('멋져', 4321);
 
 select * from mar14_manager_request;
 
@@ -14,6 +14,6 @@ create table mar14_bpbascp_macro(
 
 create sequence mar14_bpbascp_macro_seq;
 
-insert into mar14_bpbascp_macro values(mar14_bpbascp_macro_seq.nextval, '저런');
+insert into mar14_bpbascp_macro values(mar14_bpbascp_macro_seq.nextval, '오예');
 
 select * from mar14_bpbascp_macro;

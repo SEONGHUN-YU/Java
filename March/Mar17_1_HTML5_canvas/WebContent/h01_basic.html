@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var paper = document.getElementById("paper");
+		var pen = paper.getContext("2d");
+		
+		pen.fillRect(10, 20, 30, 40);
+		pen.fillStyle = "#ff00a1";
+		pen.fillRect(100, 200, 30, 40);
+		
+		var cvOffset = $("#paper").offset();
+		$("#paper").mouseup(function(e) {
+			var x = e.pageX - cvOffset.left - 3 - 15;
+			var y = e.pageY - cvOffset.top - 3 - 15; // 마우스좌표 - 캔버스좌표 - 보더 - 반토막
+			pen.fillRect(x, y, 30, 30); 			// 3번째 4번째 값 반토막 빼줌
+			// 브라우저(크롬)의 (0, 0) 이랑 canvas의 (0, 0)이 다르기 때문
+		});
+	});
+</script>
+<style type="text/css">
+#paper {
+	border: black solid 3px;
+}
+</style>
+</head>
+<body>
+	<canvas id="paper" width="300px" height="300px"></canvas>
+	<!--
+		웹표준 3신기
+		jQuery <- 얘가 먼저 나오긴 했음
+		HTML5
+		CSS3
+		
+		HTML5가 추구하는 거 : add-on없이 html만으로 구현
+		
+		웹페이지에 그래픽 그리려면 : flash였는데
+		HTML5에 <canvas>가 추가되어 가지고 flash같은 거 설치할 필요없이
+		그래픽 그릴 수 있게 됨
+		
+		사이즈 조절은 width, height로! css로 조절하지말고(뭔가 문제가 있다 함)
+		<canvas>는 $("#id")로 선택이 뭔가 안 먹는다 함
+	-->
+</body>
+</html>

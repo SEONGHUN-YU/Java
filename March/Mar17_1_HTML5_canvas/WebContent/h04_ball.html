@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var paper = document.getElementById("paper");
+		var pen = paper.getContext("2d");
+		
+		var ballX = 10, ballY = 10;
+		var xSpd = 7, ySpd = 7;
+		var barX = 30;
+		var paperOffset = $("#paper").offset();
+		
+		var ball = new Image();
+		ball.src = "img/ball_2.png";
+		ball.onload = function() {
+			var t = setInterval(function(e) {
+				pen.save();
+				
+				pen.fillStyle = "#00000011";
+				pen.fillRect(0, 0, 400, 500);
+				
+				if (ballX + 30 >= 400 || ballX <= 0) { // 좌항에 더하는 거, 우항에 빼는 것도 ==으로 처리하면 둘 다 틀림
+					xSpd *= -1;					// 속도가 빠르면 그냥 넘어가버리고 if문에 안 걸릴 수 있음
+				}
+				if (ballY <= 0) {
+					ySpd *= -1;
+				}
+				if (ballY + 30 >= 485 // 단축평가를 위해 확률 낮은 걸 앞으로 배치
+					&& ballX >= barX - 15 
+					&& ballX + 30 <= barX + 100 + 15) { // ballX >= barX - 10 공크기 절반정도 뺀다
+					// 초록 : 공의 오른쪽이 바의 오른쪽보다 공 반개만큼 나간 것보다 이하
+					// 파랑 : 공 바닥이 바에 올라서면
+ 					ySpd *= -1;
+				}
+				// if-elseif-elseif-elseif -> if*4 -> if-elseif*2 -> ||, *= -1 까지
+				
+				if (ballY + 30 >= 500) { // 바닥에 닿으면
+					clearInterval(t);
+				}
+				
+				
+				ballX += xSpd;
+				ballY += ySpd;
+				pen.shadowOffsetX = 0, pen.shadowOffsetY = 0;
+				pen.shadowBlur = 30;
+				pen.shadowColor = "orange";
+				pen.drawImage(ball, ballX, ballY, 30, 30);
+				
+				pen.shadowBlur = 10;
+				pen.shadowColor = "white";
+				pen.fillStyle = "blue";
+				pen.fillRect(barX, 485, 100, 15);
+				
+				pen.fillStyle = "#00000000";
+				pen.fillRect(barX - 15, 470, 130, 15)
+				
+				pen.restore();
+			}, 15);
+			
+			$("#paper").mousemove(function(e) {
+				barX = e.pageX - paperOffset.left - 50;
+			});
+		}
+	});
+</script>
+</head>
+<body>
+	<canvas id="paper" width="400px" height="500px"></canvas>
+</body>
+</html>

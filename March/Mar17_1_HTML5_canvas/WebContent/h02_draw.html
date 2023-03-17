@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var paper = document.getElementById("paper");
+		var pen = paper.getContext("2d");
+		pen.fillRect(10, 20, 30, 30);
+		pen.fillStyle = "#FF0000";
+		pen.fillRect(40, 50, 30, 30);
+		pen.fillStyle = "#00FF00";
+		pen.fillRect(70, 80, 30, 30);
+		
+		// 선 그리기
+		pen.strokeStyle = "#0000FF"; // 색깔 넣기
+		pen.lineWidth = 5; // 선 굵기
+		pen.beginPath(); // begin부터 close까지가 한 세트
+		pen.moveTo(100, 110); // 시작점에 펜을 가져다 둠
+		pen.lineTo(200, 210); // 끝점까지
+		pen.closePath();
+		pen.stroke(); // 그리기 실행
+		
+		// 이미지 파일 그리기 <- 이거는 그냥 JS활용 느낌
+		var lotto = new Image();
+		lotto.src = "img/ball_2.png";
+		lotto.onload = function() {
+			// pen.drawImage(lotto, 200, 210);
+			pen.drawImage(lotto, 200, 210, 100, 100); // (식별자명, x좌표, y좌표, 사이즈 조절, 사이즈 조절);
+		};
+		
+		pen.save(); // 펜에 세팅해준 거 저장(색, 그림자, ...)
+		
+		// 그림자
+		pen.shadowOffsetX = 5;
+		pen.shadowOffsetY = 15; // 얼마나 삐져나갈지
+		pen.shadowBlur = 10;
+		pen.shadowColor = "red";
+		pen.fillStyle = "gray";
+		pen.fillRect(300, 10, 50, 50);
+		
+		pen.restore(); // 저장된 거 불러오기
+		
+		pen.fillStyle = "orange";
+		pen.fillRect(350, 60, 50, 50);
+	});
+</script>
+<style type="text/css">
+#paper {
+	border: black solid 3px;
+}
+</style>
+</head>
+<body>
+	<canvas id="paper" width="500px" height="500px"></canvas>
+</body>
+</html>
