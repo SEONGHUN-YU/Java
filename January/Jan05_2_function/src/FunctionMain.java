@@ -11,7 +11,7 @@ public class FunctionMain {
 	// 정수를 몇개를 넣든지 그걸 다 곱한거 출력하는 함수
 	// 자료형... 변수명 : 갯수 무제한 parameter
 	public static void printMD(int... is) { // ...<- 배열 취급
-
+		
 		int multi = 1;
 		for (int i : is) {
 			multi *= i;

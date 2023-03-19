@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FunctionMain4_1 {
 	public static void main(String[] args) {
-
+		
 		String[] rps = { "---", "가위", "바위", "보" };
 		for (int i = 1; i < rps.length; i++) {
 			System.out.printf("%d) %s\n", i, rps[i]);
