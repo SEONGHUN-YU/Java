@@ -8,7 +8,10 @@ function regCheck() {
 	let addr3Box = document.f.bm_addr3;
 	let photoBox = document.f.bm_photo;
 
-	if (isEmpty(idBox) || notAllowedLetter(idBox)) {
+	$("#joinID").css("color")
+	if (isEmpty(idBox) 
+			|| notAllowedLetter(idBox) 
+			|| $("#joinID").css("color") == "rgb(255, 0, 0)") { // 중복이라서 color가 red가 되어있으면 걸림
 		alert("ID 확인");
 		idBox.value = "";
 		idBox.focus();

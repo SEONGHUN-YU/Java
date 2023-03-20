@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<td class="td1">ID</td>
-				<td align="right"><input name="bm_id" placeholder="ID" autofocus="autofocus" autocomplete="off"></td>
+				<td align="right"><input id="regID" name="bm_id" placeholder="ID" autofocus="autofocus" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">PW</td>
@@ -54,8 +54,8 @@
 			<tr>
 				<td class="td1">주소</td>
 				<td align="right">
-					<input name="bm_addr1" placeholder="우편번호" autocomplete="off"><br>
-					<input name="bm_addr2" placeholder="주소" autocomplete="off"><br>
+					<input id="regAddr1" name="bm_addr1" placeholder="우편번호" autocomplete="off" readonly="readonly"><br>
+					<input id="regAddr2" name="bm_addr2" placeholder="주소" autocomplete="off" readonly="readonly"><br>
 					<input name="bm_addr3" placeholder="상세주소" autocomplete="off"><br>
 				</td>
 			</tr>
