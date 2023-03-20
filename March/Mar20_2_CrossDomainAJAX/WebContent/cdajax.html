@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// AJAX : 브라우저의 동일 출처 정책 -> 외부의 데이터는 튕겨냄
+		// 그래서 필요하고, 나온 게
+		// Cross-Domain AJAX : 외부 데이터를 가져오는 AJAX
+		// 연결할 수 있는 방법들
+		//		1) 서버측에서 Access-Control-Allow-Origin 헤더 설정을 해둠 <- 연결 가능해짐
+		//		2) 서버측에서 안 해놨으면...?
+		$.ajax({ // $.ajax({});
+			url : "http://localhost/mar201ajax/menu.get.xml",
+			success : function(xmlData) {
+			}
+		});
+		
+		$.getJSON("http://localhost/mar201ajax/product.get.json?page=1", function(jsonData) { // 주소, 콜백함수
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="b1">메뉴XML가져오기</button>
+	<button id="b2">상품JSON가져오기</button>
+</body>
+</html>

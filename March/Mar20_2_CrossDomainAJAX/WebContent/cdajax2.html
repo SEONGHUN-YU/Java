@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.getJSON("https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=baff8f3c6cbc28a4024e336599de28c4&units=metric&lang=kr", function(jd) {
+			// weather [] {}
+			//		weather[0].description, weather[0].icon
+			// 		http://openweathermap.org/img/wn/ + 01d + @2x.png // src 주소
+			// main {} 
+			//		.temp, .humidity
+			
+			// ↓ 내가 했던 방식
+			/* var d = $("<tr></tr>").append($("<td></td>").text(jd.weather[0].description));
+			var t = $("<tr></tr>").append($("<td></td>").text(jd.main.temp));
+			var h = $("<tr></tr>").append($("<td></td>").text(jd.main.humidity));
+			var i = $("<tr></tr>").append($("<img></img>").attr("src", "http://openweathermap.org/img/wn/"+ jd.weather[0].icon +"@2x.png"));
+			$("table").append(d, t, h, i); */
+			
+			$.getJSON("https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=baff8f3c6cbc28a4024e336599de28c4&units=metric&lang=kr", function(d) {
+				$("#d").text(d.weather[0].description);
+				$("img").attr("src", "http://openweathermap.org/img/wn/"+ jd.weather[0].icon +"@2x.png");
+				$("#t").text(d.main.temp + "℃");
+				$("#h").text(d.main.humidity + "%");
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td rowspan="3"><img></td>
+			<td id="d"></td>
+		</tr>
+		<tr><td align="right" id="t"></td></tr>
+		<tr><td align="right" id="h"></td></tr>
+	</table>
+</body>
+</html>

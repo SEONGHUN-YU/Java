@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.mar201ajax.menu.MenuMapper">
+	<select id="get" resultType="com.yu.mar201ajax.menu.Menu">
+		select * from mar20_menu order by m_name
+	</select>
+	<insert id="reg" parameterType="com.yu.mar201ajax.menu.Menu">
+		insert into mar20_menu values(#{m_name}, #{m_price})
+	</insert>
+	<select id="search" parameterType="com.yu.mar201ajax.menu.Menu" resultType="com.yu.mar201ajax.menu.Menu">
+		select * from mar20_menu where m_name like '%'||#{m_name}||'%' order by m_name
+	</select>
+</mapper>
